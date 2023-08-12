@@ -18,9 +18,11 @@ $Host.UI.RawUI.ForegroundColor = "Green"
 function prompt {
     if ($PWD.Path -eq $workspace) {
         "⌨️> "
-    } elseif ($PWD.Path -like "*\NEXUS\*" -or $PWD.Path -eq "*\NEXUS") {
-        $promptPath = $PWD.Path -replace "^\\NEXUS(\\.*)?", ''
-        "$promptPath> "
+    } elseif ($PWD.Path -like "*\NEXUS\*") {
+        $nexusPart = $PWD.Path -replace ".*\\NEXUS\\?", "NEXUS\"
+        "🌱 $nexusPart> "
+    } elseif ($PWD.Path -like "*\NEXUS") {
+        "🌱 NEXUS> "
     } else {
         "$PWD> "
     }
@@ -49,9 +51,7 @@ echo "To modify commands: modcmd"
 echo ""
 echo "Pending Tasks:"
 echo "----------------"
-echo "[1] Task A - In Progress"
-echo "[2] Task B - Pending"
-echo "[3] Task C - Completed"
+echo "[1] Task 1 - COBOL Project 3"
 echo ""
 echo "What would you like to do?"
 echo ""
@@ -85,4 +85,4 @@ function ListCmd {
     }
 }
 
-function modcmd {notepad "commands.ps1"}
+function modcmd {notepad "$workspace\commands.ps1"}
