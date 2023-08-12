@@ -1,0 +1,1 @@
+If cloning this repo, set in `C:\Users\$username\Documents\`, name it **PowerShell**
