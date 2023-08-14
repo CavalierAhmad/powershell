@@ -39,6 +39,7 @@ get-date
 echo "To view commands, type viewcmd:"
 }
 
+
 # Customize the prompt
 function prompt {
     if ($PWD.Path -eq $workspace) {
