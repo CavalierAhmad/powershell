@@ -1,18 +1,43 @@
 ##### PowerShell Profile Script
 
-# variables
-$workspace = "$HOME\Documents\PowerShell"
-
+# MyTerminal version
+$version = "1.0"
 
 # Set the working directory
+$workspace = "$HOME\Documents\PowerShell"
 Set-Location $workspace
 
 # Set console title
-$Host.UI.RawUI.WindowTitle = "My Custom Terminal"
+$Host.UI.RawUI.WindowTitle = "MyTerminal"
 
 # Set console color
 $Host.UI.RawUI.BackgroundColor = "Black"
 $Host.UI.RawUI.ForegroundColor = "Green"
+
+# Set output speed for dramatic effect
+$sleeptime = 60
+function wait {sleep -ms $sleeptime}
+
+# Load banner
+. ".\banner.ps1"
+slowbanner
+
+get-date;wait
+
+# Load tasks
+. ".\tasklist.ps1";wait
+
+echo "To view commands, type viewcmd:"
+
+# Load commands
+. ".\commands.ps1"
+
+function clr {cls ;
+fastbanner
+get-date
+. ".\tasklist.ps1"
+echo "To view commands, type viewcmd:"
+}
 
 # Customize the prompt
 function prompt {
@@ -28,35 +53,6 @@ function prompt {
     }
 }
 
-
-# Load aliases
-. ".\commands.ps1"
-
-# Display Macros loaded message
-echo "Commands loaded."
-
-# Display Pending Tasks section
-echo " __      __        __                                "
-echo "/  \    /  \ ____ |  |   ____   ____   _____   ____  "
-echo "\   \/\/   // __ \|  | _/ ___\ / __ \ /     \_/ __ \ "
-echo " \        /\  ___/_  |__  \___(  \_\ )  | |  \  ___/_"
-echo "  \__/\__/  \___  /____/\___  /\____/|__|_|  /\___  /"
-echo "                \/          \/             \/     \/ "
-
-echo ""
-echo "To list commands:   listcmd"
-echo "To add commands:    addcmd"
-echo "To modify commands: modcmd"
-
-echo ""
-echo "Pending Tasks:"
-echo "----------------"
-echo "[1] Task 1 - COBOL Project 3"
-echo ""
-echo "What would you like to do?"
-echo ""
-
-
 # Function to add a new function definition
 function AddCmd {
     param(
@@ -70,9 +66,10 @@ function AddCmd {
 }
 
 # Function to list all functions with descriptions
-function ListCmd {
+function viewcmd {
     $functions = Get-Content -Path "commands.ps1" | Select-String -Pattern "^function\s(.+?)\s\{(.+?)\}$" -AllMatches
 
+    clr
     foreach ($function in $functions.Matches) {
         $functionName = $function.Groups[1].Value
         $functionDescription = "No description"
@@ -83,6 +80,11 @@ function ListCmd {
 
         Write-Host "$functionName   ->   $functionDescription"
     }
+	echo @"
+*************************
+To add:    addcmd
+To modify: modcmd
+"@
 }
 
 function modcmd {notepad "$workspace\commands.ps1"}
