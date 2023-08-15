@@ -1,10 +1,12 @@
 ##### PowerShell Profile Script
 
+# TODO: separate cmdlets "loading" from actual presentation script
+
 # MyTerminal version
 $version = "1.0"
 
 # Set the working directory
-$workspace = "$HOME\Documents\PowerShell"
+$workspace = "$PROFILE\.."
 Set-Location $workspace
 
 # Set console title
@@ -16,13 +18,16 @@ $Host.UI.RawUI.ForegroundColor = "Green"
 
 # Set output speed for dramatic effect
 $sleeptime = 60
-function wait {sleep -ms $sleeptime}
+function wait {sleep -Milliseconds $sleeptime}
+# function wait {echo wait}
 
 # Load banner
 . ".\banner.ps1"
 slowbanner
 
-get-date;wait
+# Display date
+$date = get-date
+echo "`nTODAY IS: $date";wait
 
 # Load tasks
 . ".\tasklist.ps1";wait
@@ -38,7 +43,6 @@ get-date
 . ".\tasklist.ps1"
 echo "To view commands, type viewcmd:"
 }
-
 
 # Customize the prompt
 function prompt {
