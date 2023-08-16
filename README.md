@@ -1,7 +1,7 @@
 To cloning this repo: `Win` + `X`, `I`
 ```shell
 cd $home/Documents
-git clone https://github.com/CavalierAhmad/powershell #Can skip next step if rename repo?
+git clone https://github.com/CavalierAhmad/powershell #Can skip next step if rename ths repo?
 ren "powershell" "WindowsPowerShell" #Not tested
 # git should be functional but test to make sure: git status
 ```

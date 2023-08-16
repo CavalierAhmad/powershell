@@ -1,13 +1,25 @@
 ##### PowerShell Profile Script
 
-# TODO: separate cmdlets "loading" from actual presentation script
+########### LIST ALL VARS HERE
 
 # MyTerminal version
-$version = "1.0"
+	$version = "1.0"
 
 # Set the working directory
-$workspace = "$PROFILE\.."
-Set-Location $workspace
+	$workspace = split-path $profile -parent;
+	Set-Location $workspace
+
+# Load other variables
+	. ".\variables"
+	$sleeptime = 60 # Set output speed for dramatic effect
+
+# Load aliases
+	. ".\aliases"
+	nal open "saps"
+
+# Load functions
+	. ".\functions"
+	function wait {sleep -Milliseconds $sleeptime}
 
 # Set console title
 $Host.UI.RawUI.WindowTitle = "MyTerminal"
@@ -16,80 +28,20 @@ $Host.UI.RawUI.WindowTitle = "MyTerminal"
 $Host.UI.RawUI.BackgroundColor = "Black"
 $Host.UI.RawUI.ForegroundColor = "Green"
 
-# Set output speed for dramatic effect
-$sleeptime = 60
-function wait {sleep -Milliseconds $sleeptime}
-# function wait {echo wait}
-
-# Load banner
+# Display banner
 . ".\banner.ps1"
-slowbanner
+slowbanner # Display banner
 
-# Display date
-$date = get-date
-echo "`nTODAY IS: $date";wait
+# Display datetime
+$date = get-date -format "dddd, MMMM d, yyyy"
+$time = get-date -format "hh:mm tt"
+echo "`nTODAY IS: $date $time`n";wait
 
 # Load tasks
+echo "PENDING TASKS (make pretty table):"
+
+echo "          Task     |   Time Left    "
+echo "    --------------------------------"
 . ".\tasklist.ps1";wait
 
-echo "To view commands, type viewcmd:"
-
-# Load commands
-. ".\commands.ps1"
-
-function clr {cls ;
-fastbanner
-get-date
-. ".\tasklist.ps1"
-echo "To view commands, type viewcmd:"
-}
-
-# Customize the prompt
-function prompt {
-    if ($PWD.Path -eq $workspace) {
-        "⌨️> "
-    } elseif ($PWD.Path -like "*\NEXUS\*") {
-        $nexusPart = $PWD.Path -replace ".*\\NEXUS\\?", "NEXUS\"
-        "🌱 $nexusPart> "
-    } elseif ($PWD.Path -like "*\NEXUS") {
-        "🌱 NEXUS> "
-    } else {
-        "$PWD> "
-    }
-}
-
-# Function to add a new function definition
-function AddCmd {
-    param(
-        [string]$FunctionName,
-        [string]$FunctionScript,
-        [string]$FunctionDescription = "No description"
-    )
-
-    Add-Content -Path "commands.ps1" -Value "`nfunction $FunctionName { $FunctionScript }"
-    Write-Host "Function '$FunctionName' added."
-}
-
-# Function to list all functions with descriptions
-function viewcmd {
-    $functions = Get-Content -Path "commands.ps1" | Select-String -Pattern "^function\s(.+?)\s\{(.+?)\}$" -AllMatches
-
-    clr
-    foreach ($function in $functions.Matches) {
-        $functionName = $function.Groups[1].Value
-        $functionDescription = "No description"
-
-        if ($function -match "#\sDescription:\s(.+)$") {
-            $functionDescription = $matches[1]
-        }
-
-        Write-Host "$functionName   ->   $functionDescription"
-    }
-	echo @"
-*************************
-To add:    addcmd
-To modify: modcmd
-"@
-}
-
-function modcmd {notepad "$workspace\commands.ps1"}
+echo "To view commands, type viewcmd:`n"
