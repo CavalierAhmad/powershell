@@ -5,4 +5,6 @@ echo "investigate why emojis dont display correctly"
 echo "[x] <task> <time remain>"
 echo "[y] <task> <time remain>"
 echo "[z] Detailed variation: <index> <task> <status> <deadline> <time remaining> <location>"
-echo ""
+echo "GOTO Android final pdf: android-final"
+ 
+ 

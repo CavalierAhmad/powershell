@@ -29,4 +29,4 @@ echo "    --------------------------------";wait
 # Display tasks
 . ".\tasklist"  # change to ./printtasks using iteration
 
-echo "To view commands, type viewcmd:`n"
+echo "`nTo view commands, type viewcmd:`n"
