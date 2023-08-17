@@ -1,5 +1,5 @@
 function greet { echo "Hello World" }
-function return {cd $workspace }
+function home {cd $workspace}
 function nexus { cd "C:\Users\Ahmad\ONEDRI~1\NEXUS"}
 function java {cd "C:\Users\Ahmad\ONEDRI~1\NEXUS\ACADEMIC\LEVEL 3\*JAVA"}
 function cobol {cd "C:\Users\Ahmad\ONEDRI~1\NEXUS\ACADEMIC\LEVEL 3\*COB*"}
@@ -16,10 +16,10 @@ function clr {cls ;
 # Customize the prompt
 function prompt {
     if ($PWD.Path -eq $workspace) {
-        "\>"
+        "\> "
     } elseif ($PWD.Path -like "*\NEXUS\*") {
         $nexusPart = $PWD.Path -replace ".*\\NEXUS\\?", "NEXUS\"
-        "🌱 $nexusPart> "
+        "$nexusPart> "
     } elseif ($PWD.Path -like "*\NEXUS") {
         "\NEXUS> "
 	# 🌱 <-- this emoji does not work on every machine
@@ -63,3 +63,4 @@ To modify: modcmd
 }
 
 function modcmd {notepad "$workspace\functions.ps1"}
+function wait {sleep -Milliseconds $sleeptime}

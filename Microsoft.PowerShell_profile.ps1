@@ -1,25 +1,13 @@
-##### PowerShell Profile Script
-
-########### LIST ALL VARS HERE
-
-# MyTerminal version
-	$version = "1.0"
+### PowerShell Profile Script
 
 # Set the working directory
-	$workspace = split-path $profile -parent;
-	Set-Location $workspace
+Set-Location "$profile\.."
 
-# Load other variables
-	. ".\variables"
-	$sleeptime = 60 # Set output speed for dramatic effect
-
-# Load aliases
-	. ".\aliases"
-	nal open "saps"
-
-# Load functions
-	. ".\functions"
-	function wait {sleep -Milliseconds $sleeptime}
+. ".\variables"   # Load variables
+. ".\aliases"     # Load aliases
+. ".\functions"   # Load functions
+. ".\banner"      # Load banner
+# . ".\tasklist"  # Load tasks 
 
 # Set console title
 $Host.UI.RawUI.WindowTitle = "MyTerminal"
@@ -29,19 +17,16 @@ $Host.UI.RawUI.BackgroundColor = "Black"
 $Host.UI.RawUI.ForegroundColor = "Green"
 
 # Display banner
-. ".\banner.ps1"
 slowbanner # Display banner
 
 # Display datetime
-$date = get-date -format "dddd, MMMM d, yyyy"
-$time = get-date -format "hh:mm tt"
 echo "`nTODAY IS: $date $time`n";wait
 
-# Load tasks
-echo "PENDING TASKS (make pretty table):"
-
-echo "          Task     |   Time Left    "
-echo "    --------------------------------"
-. ".\tasklist.ps1";wait
+# Display tasklist header
+echo "PENDING TASKS (make pretty table):";wait
+echo "          Task     |   Time Left    ";wait
+echo "    --------------------------------";wait
+# Display tasks
+. ".\tasklist"  # change to ./printtasks using iteration
 
 echo "To view commands, type viewcmd:`n"
