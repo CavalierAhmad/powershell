@@ -1,5 +1,10 @@
 ### PowerShell Profile Script
 
+# TODO: Separate display procedure from loading procedure
+# TODO: Nest display-procedure inside function taking 1 boolean para for controlling display speed
+# TODO: After each command, rerun the script function but with speed limiter off for instant load
+# TODO: Introduce color schema
+
 # Set the working directory
 Set-Location "$profile\.."
 
@@ -20,10 +25,10 @@ $Host.UI.RawUI.ForegroundColor = "Green"
 slowbanner # Display banner
 
 # Display datetime
-echo "`nTODAY IS: $date $time`n";wait
+echo "`nTODAY IS: $date $time";wait
 
 # Display tasklist header
-echo "PENDING TASKS (make pretty table):";wait
+echo "`nPENDING TASKS (make pretty table):";wait
 echo "          Task     |   Time Left    ";wait
 echo "    --------------------------------";wait
 # Display tasks
