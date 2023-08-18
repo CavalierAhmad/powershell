@@ -1,3 +1,4 @@
+function save ($key, $value) {"`$$key = `"$value`"" >> $variables}
 function greet { echo "Hello World" }
 function home {cd $workspace}
 function nexus { cd "C:\Users\Ahmad\ONEDRI~1\NEXUS"}
