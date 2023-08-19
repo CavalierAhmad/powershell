@@ -1,4 +1,4 @@
-function upload ($message) {clr ; git add . ; git commit -am "$message" ; git push ; git status}
+function upload ($message) {git add . ; git commit -am "$message" ; git push ; git status}
 function save ($key, $value) {"`$$key = `"$value`"" >> $variables}
 function greet { echo "Hello World" }
 function home {cd $workspace}
