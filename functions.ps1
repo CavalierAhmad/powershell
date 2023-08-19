@@ -1,13 +1,17 @@
-function upload ($message) {git add . ; git commit -am "$message" ; git push ; git status}
+function upload ($message) {
+	echo "git add"
+	git add .
+	echo "commit"
+	git commit -am "$message"
+	echo "git push"
+	git push
+	echo "Status:"
+	git status
+}
 function save ($key, $value) {"`$$key = `"$value`"" >> $variables}
 function greet { echo "Hello World" }
 function home {cd $workspace}
 function nexus { cd "C:\Users\Ahmad\ONEDRI~1\NEXUS"}
-function java {cd "C:\Users\Ahmad\ONEDRI~1\NEXUS\ACADEMIC\LEVEL 3\*JAVA"}
-function cobol {cd "C:\Users\Ahmad\ONEDRI~1\NEXUS\ACADEMIC\LEVEL 3\*COB*"}
-function mobile {cd "C:\Users\Ahmad\ONEDRI~1\NEXUS\ACADEMIC\LEVEL 3\*MOB*"}
-function systems {cd "C:\Users\Ahmad\ONEDRI~1\NEXUS\ACADEMIC\LEVEL 3\*SYS*"}
-function network {cd "C:\Users\Ahmad\ONEDRI~1\NEXUS\ACADEMIC\LEVEL 3\*NET*"}
 function clr {cls ;
 	fastbanner
 	get-date
