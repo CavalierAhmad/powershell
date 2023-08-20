@@ -9,11 +9,12 @@
 # Set the working directory
 Set-Location "$profile\.."
 
-. ".\variables"   # Load variables
-. ".\aliases"     # Load aliases
-. ".\functions"   # Load functions
-. ".\banner"      # Load banner
-# . ".\tasklist"  # Load tasks 
+echo "Loading variables..." ; . ".\variables"
+echo "Loading aliases..."   ; . ".\aliases"
+echo "Loading functions..." ; . ".\functions"
+echo "Loading banner..."    ; . ".\banner"
+echo "Loading tasks..."
+# . ".\tasklist"
 
 # Set console title
 $Host.UI.RawUI.WindowTitle = "MyTerminal"
@@ -21,6 +22,10 @@ $Host.UI.RawUI.WindowTitle = "MyTerminal"
 # Set console color
 $Host.UI.RawUI.BackgroundColor = "Black"
 $Host.UI.RawUI.ForegroundColor = "Green"
+
+## BEGIN DISPLAY
+
+cls
 
 # Display banner
 slowbanner # Display banner
