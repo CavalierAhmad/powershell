@@ -9,12 +9,13 @@
 # Set the working directory
 Set-Location "$profile\.."
 
-echo "Loading variables..." ; . ".\variables"
-echo "Loading aliases..."   ; . ".\aliases"
-echo "Loading functions..." ; . ".\functions"
-echo "Loading banner..."    ; . ".\banner"
-echo "Loading tasks..."
-# . ".\tasklist"
+echo "Loading variables..." 	 ; . ".\variables"
+echo "Loading aliases..."   	 ; . ".\aliases"
+echo "Loading functions..." 	 ; . ".\functions"
+echo "Loading banner..."    	 ; . ".\banner"
+echo "Loading RNG..."            ; . ".\RandomAlphanumericGenerator"
+echo "Loading task blueprint..." ;. ".\TaskObject.ps1"
+pause
 
 # Set console title
 $Host.UI.RawUI.WindowTitle = "MyTerminal"
@@ -22,9 +23,6 @@ $Host.UI.RawUI.WindowTitle = "MyTerminal"
 # Set console color
 $Host.UI.RawUI.BackgroundColor = "Black"
 $Host.UI.RawUI.ForegroundColor = "DarkYellow"
-
-# Theme
-oh-my-posh --init --shell pwsh --config ~/AppData/Local/Programs/oh-my-posh/themes/jandedobbeleer.omp.json | Invoke-Expression
 
 ## BEGIN DISPLAY
 

@@ -22,7 +22,7 @@ function clr {cls ;
 # Customize the prompt
 function prompt {
     if ($PWD.Path -eq $workspace) {
-        "\> "
+        "> "
     } elseif ($PWD.Path -like "*\NEXUS\*") {
         $nexusPart = $PWD.Path -replace ".*\\NEXUS\\?", "NEXUS\"
         "$nexusPart> "
