@@ -9,12 +9,12 @@
 # Set the working directory
 Set-Location "$profile\.."
 
-echo "Loading variables..." 	 ; . ".\variables"
-echo "Loading aliases..."   	 ; . ".\aliases"
-echo "Loading functions..." 	 ; . ".\functions"
-echo "Loading banner..."    	 ; . ".\banner"
-echo "Loading RNG..."            ; . ".\RandomAlphanumericGenerator"
-echo "Loading task blueprint..." ;. ".\TaskObject.ps1"
+echo "Loading variables..."       ; . ".\variables"
+echo "Loading aliases..."         ; . ".\aliases"
+echo "Loading functions..."       ; . ".\functions"
+echo "Loading banner..."          ; . ".\banner"
+echo "Loading RNG..."             ; . ".\RandomAlphanumericGenerator"
+echo "Loading Task blueprints..." ; . ".\TaskCategory.ps1" ; . ".\Task.ps1"
 pause
 
 # Set console title
@@ -24,7 +24,7 @@ $Host.UI.RawUI.WindowTitle = "MyTerminal"
 $Host.UI.RawUI.BackgroundColor = "Black"
 $Host.UI.RawUI.ForegroundColor = "DarkYellow"
 
-## BEGIN DISPLAY
+## BEGIN DISPLAY (control speed with boolean)
 
 cls
 
