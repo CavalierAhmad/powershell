@@ -1,6 +1,5 @@
 # Class desc
 
-
 class Task {
     [string] $id
     [string] $title
@@ -10,6 +9,7 @@ class Task {
     [TaskCategory] $category
     [bool] $highPriority = $false
     [bool] $isCompleted = $false
+    [bool] $isOverdue = $false
 
     # Constructors
     Task([string]$title, [DateTime]$deadline, [array]$frequency, [TaskCategory]$category) {$this.init($title, $deadline, $frequency, $category)}
@@ -28,15 +28,23 @@ class Task {
         $this.frequency = $frequency
         $this.category = $category
     }
-    
-    
 
+    # Generate a task ID
+    [string] newTaskID() {
+        $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
-    [void] ShowInfo() {
-        Write-Host "ID: $($this.Id)"
-        Write-Host "Title: $($this.Title)"
-        # Output other properties as needed
+        $random = Get-Random -Minimum 0 -Maximum $characters.Length
+        $firstByte = $characters[$random]
+        $random = Get-Random -Minimum 0 -Maximum $characters.Length
+        $secondByte = $characters[$random]
+    
+        return "$firstByte$secondByte"
     }
+    
+    # USAGE:
+    # $randomValue = Get-RandomAlphanumeric
+    # Write-Host "Random Alphanumeric Value: $randomValue"
+
 }
 enum TaskCategory {
     NONE
@@ -49,15 +57,8 @@ enum TaskCategory {
     SPEC
 }
 
-# External function to generate a task ID
-function newTaskID {
-    # Implement your ID generation logic here
-    return [Guid]::NewGuid().ToString()
-}
-
 # Create an instance of the class with optional parameters
 [Task]::new("title string")
 [Task]::new("title string", (Get-Date))
 [Task]::new("title string", (Get-Date), @(7,'D'))
 [Task]::new("title string", (Get-Date), @(7,'D'), [TaskCategory]::HOME)
-# $task.ShowInfo()
