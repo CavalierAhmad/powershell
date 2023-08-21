@@ -21,7 +21,10 @@ $Host.UI.RawUI.WindowTitle = "MyTerminal"
 
 # Set console color
 $Host.UI.RawUI.BackgroundColor = "Black"
-$Host.UI.RawUI.ForegroundColor = "Green"
+$Host.UI.RawUI.ForegroundColor = "DarkYellow"
+
+# Theme
+oh-my-posh --init --shell pwsh --config ~/AppData/Local/Programs/oh-my-posh/themes/jandedobbeleer.omp.json | Invoke-Expression
 
 ## BEGIN DISPLAY
 
