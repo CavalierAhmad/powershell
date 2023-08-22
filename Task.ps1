@@ -9,7 +9,6 @@ class Task {
     [TaskCategory] $category
     [bool] $highPriority = $false
     [bool] $isCompleted = $false
-    [bool] $isOverdue = $false
 
     # Constructors
     Task([string]$title, [DateTime]$deadline, [array]$frequency, [TaskCategory]$category) {$this.init($title, $deadline, $frequency, $category)}
@@ -22,7 +21,7 @@ class Task {
     hidden init([string]$title, [DateTime]$deadline)                    {$this.init($title, $deadline, $null)}
     hidden init([string]$title, [DateTime]$deadline, [array]$frequency) {$this.init($title, $deadline, $frequency, [TaskCategory]::NONE)}
     hidden init([string]$title, [DateTime]$deadline, [array]$frequency, [TaskCategory]$category) {
-        $this.id = (newTaskID)
+        $this.id = $this.newTaskID()
         $this.title = $title
         $this.deadline = $deadline
         $this.frequency = $frequency
@@ -40,10 +39,26 @@ class Task {
     
         return "$firstByte$secondByte"
     }
-    
-    # USAGE:
-    # $randomValue = Get-RandomAlphanumeric
-    # Write-Host "Random Alphanumeric Value: $randomValue"
+
+    # SETTERS
+
+    [void] setTitle($a){$this.title = $a}
+    [void] setDeadline($a){$this.deadline = $a}
+    [void] setFrequency($a){$this.frequency = $a}
+    [void] setStatus($a){$this.status = $a}
+    [void] setCategory($a){$this.category = $a}
+    [void] setHighPriority(){$this.highPriority = -not $this.highPriority}
+    [void] setComplete(){$this.isCompleted = -not $this.isCompleted}
+
+    # GETTERS
+
+    [string] getTitle(){return $this.title}
+    [DateTime] getDeadline(){return $this.deadline}
+    [array] getFrequency(){return $this.frequency}
+    [string] getStatus(){return $this.status}
+    [TaskCategory] getCategory(){return $this.category}
+    [bool] getPriority(){return $this.highPriority}
+    [bool] getIsCompeleted(){return $this.isCompleted}
 
 }
 enum TaskCategory {
