@@ -13,9 +13,10 @@ echo "Loading variables..."       ; . ".\variables"
 echo "Loading aliases..."         ; . ".\aliases"
 echo "Loading functions..."       ; . ".\functions"
 echo "Loading banner..."          ; . ".\banner"
-echo "Loading RNG..."             ; . ".\RandomAlphanumericGenerator"
-echo "Loading Task blueprints..." ; . ".\TaskCategory.ps1" ; . ".\Task.ps1"
-pause
+. ".\Task.ps1"
+# echo " Creating array # size = 35^2
+# echo " Loading tasks into array
+# echo " Loading tasklist header
 
 # Set console title
 $Host.UI.RawUI.WindowTitle = "MyTerminal"
@@ -41,4 +42,4 @@ echo "    --------------------------------";wait
 # Display tasks
 . ".\tasklist"  # change to ./printtasks using iteration
 
-echo "`nTo view commands, type viewcmd:`n"
+echo "`nType 'commands' to view common commands, 'newvar' to add variable:`n"

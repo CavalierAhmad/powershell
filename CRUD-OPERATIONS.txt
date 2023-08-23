@@ -3,9 +3,13 @@ About frequency: when time runs out, create a copy of this task, but add frequen
 CREATE
 
 > new-task # OR create
-Title: _____     # if $null, cancel
-Deadline: ______ # if $null, add 24 hours and set Status as "unscheduled"
+XXX Title: _____     # if $null, cancel
+Deadline: # if $null, add 24 hours and set Status as "unscheduled"
 	# example: aug,25,8  ==>  August 25th at 8 am
+
+
+
+
 Repeatable? [Enter to skip or "n {D|M|Y}"]: _______  # if $null, set as $null
    1. APP
    2. FIN
@@ -69,8 +73,9 @@ finish <ID>  # same as update <ID> -done
 
 DEADLINE
 
+> update 99 -d aug,25,17
 
-
+Sets the deadline to August 25th, at 1700 for task #99 (id)
 
 
 

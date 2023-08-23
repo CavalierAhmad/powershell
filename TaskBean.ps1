@@ -28,9 +28,9 @@ class Task {
         $this.category = $category
     }
 
-    # Generate a task ID
+    # Generate a task ID, 'O' omitted cause too similar to '0'
     [string] newTaskID() {
-        $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        $characters = "ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789"
 
         $random = Get-Random -Minimum 0 -Maximum $characters.Length
         $firstByte = $characters[$random]
@@ -52,13 +52,13 @@ class Task {
 
     # GETTERS
 
-    [string] getTitle(){return $this.title}
-    [DateTime] getDeadline(){return $this.deadline}
-    [array] getFrequency(){return $this.frequency}
-    [string] getStatus(){return $this.status}
+    [string]       getTitle(){return $this.title}
+    [DateTime]     getDeadline(){return $this.deadline}
+    [array]        getFrequency(){return $this.frequency}
+    [string]       getStatus(){return $this.status}
     [TaskCategory] getCategory(){return $this.category}
-    [bool] getPriority(){return $this.highPriority}
-    [bool] getIsCompeleted(){return $this.isCompleted}
+    [bool]         getPriority(){return $this.highPriority}
+    [bool]         getIsCompeleted(){return $this.isCompleted}
 
 }
 enum TaskCategory {
@@ -73,7 +73,7 @@ enum TaskCategory {
 }
 
 # Create an instance of the class with optional parameters
-[Task]::new("title string")
-[Task]::new("title string", (Get-Date))
-[Task]::new("title string", (Get-Date), @(7,'D'))
-[Task]::new("title string", (Get-Date), @(7,'D'), [TaskCategory]::HOME)
+#[Task]::new("title string")
+#[Task]::new("title string", (Get-Date))
+#[Task]::new("title string", (Get-Date), @(7,'D'))
+#[Task]::new("title string", (Get-Date), @(7,'D'), [TaskCategory]::HOME)
