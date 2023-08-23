@@ -1,4 +1,4 @@
-To cloning this repo: `Win` + `X`, `I`
+To clone this repo: `Win` + `X`, `I`
 ```shell
 cd $home/Documents
 git clone https://github.com/CavalierAhmad/powershell #Can skip next step if rename ths repo?
