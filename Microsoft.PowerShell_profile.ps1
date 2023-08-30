@@ -42,4 +42,4 @@ echo "    --------------------------------";wait
 # Display tasks
 . ".\tasklist"  # change to ./printtasks using iteration
 
-echo "`nType 'commands' to view common commands, 'newvar' to add variable:`n"
+echo "`nType 'cmds' to view common commands, 'newv' to add variable:`n"

@@ -3,7 +3,7 @@ function listen ($prompt) {
     return $Host.UI.ReadLine()
 }
 
-function commands {
+function cmds {
     echo @"
 Command      Action
 -------      -------
@@ -12,17 +12,22 @@ tasks        List tasks, can specify category: ACA, HOME, BILL, CAR, APPT, ...
 open         Alias for start-process, executes file or folder
 nexus        Go to NEXUS, root folder in ONEDRIVE
 newV         Adds a new variable permanently, alias: addv
-getV         List all vriables
+getV         List only user-defined variables
+gv           List all environment variables
 modV         Opens list of variables for modification
 upload       Adds, commits, and pushes repo to GitHub
 create       Creates a task
 update       Updates a task
 delete       Deletes a task
+ref          Refresh profile to load new variables
+
 THIS COMMAND DOES NOT UPDATE AUTOMATICALLY
 For a detailed list:
 *** `> open `$functions
 "@
 }
+
+function ref {. $profile}
 
 function newv ($variableName, $value) {
     if (-not $variable){$variable = listen "Enter variable: $"}
@@ -32,6 +37,8 @@ function newv ($variableName, $value) {
     echo "`$$variable = `"$value`" was successfully added to `$variables."
     set-variable -name $variable -value $value -scope 'Global'  # To make it effective immediately
 }
+
+function getv {cat $variables}
 
 # This function creates a new task
 function create {
