@@ -29,6 +29,8 @@ For a detailed list:
 
 function ref {. $profile}
 
+function bills {cd $bills ; ls}
+
 function newv ($variableName, $value) {
     if (-not $variable){$variable = listen "Enter variable: $"}
     if (-not $value){$value = listen "`$$variable = "}

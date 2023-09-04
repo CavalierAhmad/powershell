@@ -11,16 +11,7 @@ class Task {
     [bool] $isCompleted = $false
 
     # Constructors
-    Task([string]$title, [DateTime]$deadline, [array]$frequency, [TaskCategory]$category) {$this.init($title, $deadline, $frequency, $category)}
-    Task([string]$title, [DateTime]$deadline, [array]$frequency)                          {$this.init($title, $deadline, $frequency)}
-    Task([string]$title, [DateTime]$deadline)                                             {$this.init($title, $deadline)}
-    Task([string]$title)                                                                  {$this.init($title)}
-    
-    # These methods link the constructors to their appropriate logic. This is necessary since constructor chaining is not allowed in Powershell
-    hidden init([string]$title)                                         {$this.init($title, (get-date).AddDays(1))} # $deadline is not nullable
-    hidden init([string]$title, [DateTime]$deadline)                    {$this.init($title, $deadline, $null)}
-    hidden init([string]$title, [DateTime]$deadline, [array]$frequency) {$this.init($title, $deadline, $frequency, [TaskCategory]::NONE)}
-    hidden init([string]$title, [DateTime]$deadline, [array]$frequency, [TaskCategory]$category) {
+    Task([string]$title, [DateTime]$deadline, [array]$frequency, [TaskCategory]$category) {
         $this.id = $this.newTaskID()
         $this.title = $title
         $this.deadline = $deadline

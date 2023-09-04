@@ -13,7 +13,7 @@ echo "Loading variables..."       ; . ".\variables"
 echo "Loading aliases..."         ; . ".\aliases"
 echo "Loading functions..."       ; . ".\functions"
 echo "Loading banner..."          ; . ".\banner"
-. ".\Task.ps1"
+. ".\TaskBean.ps1"
 # echo " Creating array # size = 35^2
 # echo " Loading tasks into array
 # echo " Loading tasklist header
