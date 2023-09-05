@@ -42,60 +42,6 @@ function newv ($variableName, $value) {
 
 function getv {cat $variables}
 
-# This function creates a new task
-function create {
-    param(
-        [string]$title,
-        [DateTime]$deadline,
-        [string]$frequency, # N,T
-        [TaskCategory]$category
-    )
-
-    $task = [Task]::new("placeholder")
-
-    # Handle $title
-    if (-not $title){
-        $title = Read-Host "Enter task name"
-        if ([string]::IsNullOrWhiteSpace($title)) {
-            Write-Host "Operation canceled."
-            return $null
-        }
-    }
-
-    # Handle $deadline
-    if (-not $deadline){
-        $rawDate = Read-Host "Deadline ['(yyyy,((mmm,dd),hh))']"
-        # If prompt is skipped, use default deadline of today + 24 hours
-        if ([string]::IsNullOrWhiteSpace($rawDate)) {
-            $deadline = (get-date).AddDays(1)
-            $task.setStatus("unscheduled")
-        } else {
-            # Allowed formats for datetime
-            $formats = @("yyyy,MMM,dd", "MMM,dd,HH", "MMM,dd")
-            $parsedDeadline = $null
-            
-            # Try all the formats until one fits
-            foreach ($format in $formats){
-                if ([DateTime]::TryParseExact($rawDate, $format, [CultureInfo]::InvariantCulture, 0, [ref]$parsedDeadline)){
-                    $deadline = $parsedDeadline
-                    break
-                }
-            }
-
-            # Handle invalid format
-            if (-not $formatFound) {
-                Write-Host "Invalid date format. Deadline remains unset."
-                $task.setStatus("unscheduled")
-            }
-        }
-    }
-
-    # Handle $frequency
-
-    # Handle $category
-    
-    return $task
-}
 function upload ($message) {
 	echo "git add"
 	git add .

@@ -9,11 +9,11 @@
 # Set the working directory
 Set-Location "$profile\.."
 
-echo "Loading variables..."       ; . ".\variables"
-echo "Loading aliases..."         ; . ".\aliases"
-echo "Loading functions..."       ; . ".\functions"
-echo "Loading banner..."          ; . ".\banner"
-. ".\TaskBean.ps1"
+echo "Loading variables..."       ; . ".\ressources\variables"
+echo "Loading aliases..."         ; . ".\ressources\aliases"
+echo "Loading functions..."       ; . ".\ressources\functions"
+echo "Loading banner..."          ; . ".\ressources\banner"
+echo "Importing task modules..."  ; . ".\TaskModule"
 # echo " Creating array # size = 35^2
 # echo " Loading tasks into array
 # echo " Loading tasklist header
@@ -39,7 +39,8 @@ echo "`nTODAY IS: $date $time";wait
 echo "`nPENDING TASKS (make pretty table):";wait
 echo "          Task     |   Time Left    ";wait
 echo "    --------------------------------";wait
+
 # Display tasks
-. ".\tasklist"  # change to ./printtasks using iteration
+. ".\ressources\tasklist"  # change to ./printtasks using iteration
 
 echo "`nType 'cmds' to view common commands, 'newv' to add variable:`n"

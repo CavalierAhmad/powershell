@@ -10,27 +10,6 @@ class Task {
     [bool] $highPriority = $false
     [bool] $isCompleted = $false
 
-    # Constructors
-    Task([string]$title, [DateTime]$deadline, [array]$frequency, [TaskCategory]$category) {
-        $this.id = $this.newTaskID()
-        $this.title = $title
-        $this.deadline = $deadline
-        $this.frequency = $frequency
-        $this.category = $category
-    }
-
-    # Generate a task ID, 'O' omitted cause too similar to '0'
-    [string] newTaskID() {
-        $characters = "ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789"
-
-        $random = Get-Random -Minimum 0 -Maximum $characters.Length
-        $firstByte = $characters[$random]
-        $random = Get-Random -Minimum 0 -Maximum $characters.Length
-        $secondByte = $characters[$random]
-    
-        return "$firstByte$secondByte"
-    }
-
     # SETTERS
 
     [void] setTitle($a){$this.title = $a}
@@ -52,6 +31,7 @@ class Task {
     [bool]         getIsCompeleted(){return $this.isCompleted}
 
 }
+
 enum TaskCategory {
     NONE
     APP
