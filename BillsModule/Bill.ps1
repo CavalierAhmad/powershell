@@ -76,13 +76,22 @@ function get-amount{
     }
 }
 function Get-Deadline {
+    write-host "Enter deadline, (enter to skip);"
+    $y = read-host "Year"  # year as int
+        if ($y -isnot [int]){$y = (get-date).year ; echo "invalid, set to $y"} 
 
 }
+
 
 function get-status{}
 function get-expenseType{}
 function get-isVariable{}
 function get-source{}
+
+while($true){
+    $y = get-deadline
+echo $y
+}
 
 $x = add-bill
 echo $x

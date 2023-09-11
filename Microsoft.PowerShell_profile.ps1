@@ -38,7 +38,7 @@ echo "`nTODAY IS: $date $time";wait
 # Display tasklist header
 echo "`nPENDING TASKS (make pretty table):";wait
 echo "          Task     |   Time Left    ";wait
-echo "    --------------------------------";wait
+echo "    --------------------------------`n";wait
 
 # Display tasks
 . ".\ressources\tasklist"  # change to ./printtasks using iteration

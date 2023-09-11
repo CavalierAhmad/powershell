@@ -16,3 +16,10 @@ $trainTicket = "C:\Users\Ahmad\Downloads\Booking confirmation - VIA Rail Canada.
 $market = "https://www.facebook.com/marketplace/you/selling"
 $pass = "C:\Users\Ahmad\Documents\PowerShell\passwords.txt"
 $bills = "C:\Users\Ahmad\OneDrive - Algonquin College\NEXUS\HOME\BILLS"
+$math = "C:\Users\Ahmad\OneDrive - Algonquin College\NEXUS\z~MISC\math_practice_book.pdf"
+$mathlearningtable = @"
+Ali:  PW17
+Toqa: PW2
+Mimo: PW2
+To print: actual-page = PW + 6
+"@
