@@ -1,8 +1,6 @@
 $version = "1.0" # MyTerminal version
-$date = get-date -format "dddd, MMMM d, yyyy"
-$time = get-date -format "hh:mm tt"
-$workspace = split-path $profile -parent
 $variables = "$workspace\ressources\variables.ps1" # path to variables
+$vars = "C:\Users\ahmad\Documents\WindowsPowerShell\ressources\variables.json"
 $aliases = "$workspace\ressources\aliases.ps1" # path to aliases
 $functions = "$workspace\ressources\functions.ps1" # path to functions
 $tasks = "$workspace\ressources\tasklist.ps1" # path to tasklist
@@ -23,3 +21,5 @@ Toqa: PW2
 Mimo: PW2
 To print: actual-page = PW + 6
 "@
+$enterprise = "C:\Users\ahmad\OneDrive - Algonquin College\NEXUS\ACADEMIC\LEVEL 4\Enterprises Applications"
+$brightspace = "https://brightspace.algonquincollege.com/d2l/lms/grades/my_grades/main.d2l?ou=544141"

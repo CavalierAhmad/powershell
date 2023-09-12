@@ -2,6 +2,7 @@
 
 # Set the working directory
 Set-Location "$profile\.."
+$workspace = split-path $profile -parent # Profile parent dir
 
 echo "Loading variables..."       ; . ".\ressources\variables"
 echo "Loading aliases..."         ; . ".\ressources\aliases"
@@ -27,6 +28,8 @@ cls
 slowbanner # Display banner
 
 # Display datetime
+$date = get-date -format "dddd, MMMM d, yyyy"
+$time = get-date -format "hh:mm tt"
 echo "`nTODAY IS: $date $time";wait
 
 # Display tasklist header
