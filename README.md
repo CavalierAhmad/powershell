@@ -1,5 +1,7 @@
 ## TODO
 
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml?view=powershell-7.3&viewFallbackFrom=powershell-7.1
+
 - [ ] After recently learning about hashtables and JSON, from now on, variables, cmds (list), tasks, bills, passwords, and more will be stored as JSON and loaded as HASH for manipulation
   - [ ] Move variables to JSON
   - [ ] Create script which convert .json to .ps1
