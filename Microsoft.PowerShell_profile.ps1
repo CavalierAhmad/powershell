@@ -1,11 +1,5 @@
 ### PowerShell Profile Script
 
-# TODO: Separate display procedure from loading procedure
-# TODO: Nest display-procedure inside function taking 1 boolean para for controlling display speed
-# TODO: After each command, rerun the script function but with speed limiter off for instant load
-# TODO: Introduce color schema
-# For the far future, PowerShell GUI?
-
 # Set the working directory
 Set-Location "$profile\.."
 
