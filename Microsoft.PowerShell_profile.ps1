@@ -4,7 +4,7 @@
 Set-Location "$profile\.."
 $workspace = split-path $profile -parent # Profile parent dir
 
-echo "Loading variables..."       ; . ".\ressources\variables"
+echo "Loading variables..."       ; . ".\ressources\load-variables"
 echo "Loading aliases..."         ; . ".\ressources\aliases"
 echo "Loading functions..."       ; . ".\ressources\functions"
 echo "Loading banner..."          ; . ".\ressources\banner"
