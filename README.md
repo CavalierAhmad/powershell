@@ -105,6 +105,13 @@ Add **-nologo** to `"commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v
             },
 ```
 
+## Changing text color
+**Examples:**
+```powershell
+write-host -foregroundcolor Red    # For warning
+write-host -backgroundcolor Yellow # For prompt
+```
+
 ## Hash Tables
 
 These are clever and useful uses of hash tables, read:
@@ -113,22 +120,22 @@ https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everythi
 
 ## JSON Manipulation
 
-### APPEND TO JSON
+#### APPEND TO JSON
 
 ##### Example
 *.json:*
 ```json
 {
   "key1": {
-    "x": "string/number/boolean/{K:V}",
-    "y": null
+    "subkey1": "string/number/boolean/{K:V}",
+    "subkey2": null
   }
 }
 ```
 
 ```powershell
-$key = "unique"                                # Create unique key
-$val = @{x = "value" ; y = "value"}            # Create new object respecting existing scopes
+$key = "unique"                                 # Create unique key
+$val = @{subkey1 = "value" ; subkey2 = "value"} # Create new object respecting existing scopes
 $json = cat .json                              # Import .json file
 $hash = $json | convertfrom-json -ashashtable  # Convert JSON to hash table
 $hash.add($key,$val)                           # Append new object to hash table
@@ -139,27 +146,27 @@ $json > .json                                  # Overwrite .json
 ```json
 {
   "key1": {
-    "x": "string/number/boolean/{K:V}",
-    "y": null
+    "subkey1": "string/number/boolean/{K:V}",
+    "subkey2": null
   },
   "key2": {
-    "x": "value",
-    "y": "value"
+    "subkey1": "value",
+    "subkey2": "value"
   }
 }
 ```
 
-### DISPLAY JSON
+#### DISPLAY JSON
 
 ##### Select all
 
 ```powershell
-$hash = cat ".json" | convertfrom-json # Import .json content and convert to hash table
+$hash = cat ".json" | convertfrom-json -ashashtable
 $psob = $hash | convertto-psob         # Convert hashtable into custom objects
 $psob | format-table -autoSize         # Display as table (optional)
 ```
 ```powershell
-function converto-psob([hash?]$hashtable){
+function converto-psob($hashtable){
     return $hashTable.GetEnumerator() | ForEach-Object { 
         [PSCustomObject]@{
             'Website' = $_.key
@@ -177,7 +184,7 @@ $tmp = $psob | where {$_.website -eq "key"} # Select all in hashtable fulfilling
 $tmp | format-list                          # Display as list
 ```
 
-### UPDATE JSON
+#### UPDATE JSON
 
 ```powershell
 $hash = cat ".json" | convertfrom-json -ashashtable
@@ -185,7 +192,7 @@ $hash['key1'].y = "new value"
 $hash | convertto-json > .json
 ```
 
-### DELETE JSON
+#### DELETE JSON
 
 ```powershell
 $hash.remove('key1')
@@ -194,7 +201,7 @@ $hash | convertto-json > .json
 
 ## Encryption
 
-TODO
+TODO, see secrets module
 
 
 
