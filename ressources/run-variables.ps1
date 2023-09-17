@@ -20,4 +20,6 @@ Mimo: PW2
 To print: actual-page = PW + 6"
 $enterprise = "C:\Users\ahmad\OneDrive - Algonquin College\NEXUS\ACADEMIC\LEVEL 4\Enterprises Applications"
 $brightspace = "https://brightspace.algonquincollege.com/d2l/lms/grades/my_grades/main.d2l?ou=544141"
+$test = "hi"
+$test2 = "hi"
 

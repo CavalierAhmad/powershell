@@ -1,18 +1,68 @@
 {
-  "website2": {
-    "user": "a",
-    "pass": 1
+  "algonquin": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
   },
-  "website3": {
-    "user": "b",
-    "pass": 2
+  "amazon": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
   },
-  "website5": {
-    "user": "username",
-    "pass": "g5tr5"
+  "bell": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
   },
-  "website6": {
-    "user": "wassup",
-    "pass": 34534534
+  "cra": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "desjardins": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "gazifere": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "hydro": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "outlook": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "steam": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "td": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "videotron": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
   }
 }

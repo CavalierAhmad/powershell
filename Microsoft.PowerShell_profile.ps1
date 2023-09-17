@@ -20,6 +20,8 @@ $Host.UI.RawUI.WindowTitle = "MyTerminal"
 $Host.UI.RawUI.BackgroundColor = "Black"
 $Host.UI.RawUI.ForegroundColor = "DarkYellow"
 
+# TODO: Put these in display.ps1
+
 ## BEGIN DISPLAY (control speed with boolean)
 
 cls

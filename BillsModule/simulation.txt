@@ -1,0 +1,37 @@
+(Load script)
+(import json to hashtable)
+(display hashtable)
+
+> mod b06
+(display single row)
+What would you like to modify, type all which applies: 2 4 5
+attr2:
+attr4:
+attr5:
+(Display diff table)
+Satisfied? [y/n]: y
+(modify hash table)
+(overwrite JSON)
+
+{
+    "B00": {
+        "name": "Car Payment",
+        "frequency": { "num": 14, "unit": "d" },
+        "amount": 199.22,
+        "deadline": "2023-09-18",
+        "status": "Automatic",
+        "expenseType": "Personal",
+        "isVariable": false,
+        "source": "Cheque"
+    },
+    "B09": {
+        "name": "Car Payment",
+        "frequency": { "num": 14, "unit": "d" },
+        "amount": 199.22,
+        "deadline": "2023-09-18",
+        "status": "Automatic",
+        "expenseType": "Personal",
+        "isVariable": false,
+        "source": "Cheque"
+    }
+}
