@@ -1,3 +1,7 @@
+## !
+
+Do not use `echo` anymore, it does not work with `-foregroundcolor`
+
 ## TODO
 
 https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml?view=powershell-7.3&viewFallbackFrom=powershell-7.1
@@ -8,7 +12,7 @@ https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility
   - [ ] Introduce CRUD to Bills
   - [ ] Introduce CRUD to passwords
 - [ ] Create custom CRUD functions to accelerate hash-json convertions
-- [ ] **SecretsModule**: Learn to enrypt and decrypt passwords to be stored in json
+- [x] **SecretsModule**: Learn to enrypt and decrypt passwords to be stored in json
 - [ ] **BillsModule**: Imitate Excel
 - [ ] **TasksModule**: Introduce CRUD to tasks
 - [ ] Separate display procedure from loading procedure
