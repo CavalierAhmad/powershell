@@ -1,0 +1,68 @@
+{
+  "algonquin": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "amazon": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "bell": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "cra": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "desjardins": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "gazifere": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "hydro": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "outlook": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "76492d1116743f0423413b16050a5345MgB8ADgAMgBtAHgAMQAyAGoARQBEADYAQwA0AG0ALwAxAGIANgBQAGcAbQA3AFEAPQA9AHwAOQBhADMANgAxADMAZQBmADcANAA4ADcAOQA5ADUAYQA1AGQAYQA3AGQANAAwADgAZgA5ADAAMwBlADcAYgBjADcAYwAwADAANgAxAGEAZAA5ADkAZQBlAGIAZQBmADkANAA5ADAAYwA5ADgANgAzAGMAYgBlADcAZAA2ADAAOAA=",
+    "note": "none"
+  },
+  "steam": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "td": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  },
+  "videotron": {
+    "url": null,
+    "user": "ENCRYPTED",
+    "pass": "ENCRYPTED",
+    "note": "none"
+  }
+}
