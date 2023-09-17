@@ -43,14 +43,14 @@ function newv ($name, $value) {
 
 function getv {cat $variables}
 
-function upload ($message) {
-	echo "git add"
+function sync ($message) {
+	write-host "git add" -ForegroundColor Green
 	git add .
-	echo "commit"
+	write-host "commit" -ForegroundColor Green
 	git commit -am "$message"
-	echo "git push"
+	write-host "git push" -ForegroundColor Green
 	git push
-	echo "Status:"
+	write-host "Status:" -ForegroundColor Green
 	git status
 }
 function greet { echo "Hello World" }
