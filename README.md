@@ -94,7 +94,7 @@ finish <ID>  # same as update <ID> -done
 
 ---
 
-## Set Up Repository
+## Set Up Repository (bad, need update)
 
 To clone this repo: `Win` + `X`, `I`
 ```shell
