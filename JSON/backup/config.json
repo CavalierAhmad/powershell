@@ -1,0 +1,22 @@
+{
+    "database": {
+      "connectionString": "Server=myServer;Database=myDatabase;User=myUser;Password=myPassword;"
+    },
+    "logging": {
+      "logLevel": "INFO",
+      "logFilePath": "C:\\Logs\\myScript.log"
+    },
+    "apiKeys": {
+      "weatherApiKey": "YOUR_API_KEY_HERE",
+      "paymentGatewayApiKey": "ANOTHER_API_KEY"
+    },
+    "filePaths": {
+      "dataDirectory": "C:\\Data\\",
+      "outputDirectory": "C:\\Output\\"
+    },
+    "features": {
+      "featureAEnabled": true,
+      "featureBEnabled": false
+    }
+  }
+  

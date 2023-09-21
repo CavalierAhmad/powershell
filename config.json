@@ -1,0 +1,39 @@
+{
+	"filePaths": {
+		"origin": "C:\\Users\\ahmad\\Documents\\PowerShell",
+		"nexus": "C:\\Users\\Ahmad\\ONEDRI~1\\NEXUS",
+		"AESkey": "C:\\Users\\Ahmad\\OneDrive - Algonquin College\\NEXUS\\z~MISC\\KEYS\\.key",
+		"JSON": {
+			"assignments": ".\\JSON\\assignments.json",
+			"bills": ".\\JSON\\bills.json",
+			"chores": ".\\JSON\\chores.json",
+			"credentials": ".\\JSON\\credentials.json",
+			"events": ".\\JSON\\events.json",
+			"tasks": ".\\JSON\\tasks.json",
+			"variables": ".\\JSON\\variables.json"
+		},
+		"modules": ".\\Modules",
+		"ressources": ".\\Ressources",
+		"scripts": ".\\Scripts",
+		"classroom": {
+			"mathbook": "C:\\Users\\Ahmad\\OneDrive - Algonquin College\\NEXUS\\z~MISC\\Classroom\\math_practice_book.pdf",
+			"progress": "C:\\Users\\Ahmad\\OneDrive - Algonquin College\\NEXUS\\z~MISC\\Classroom\\progress.json",
+			"notes":"C:\\Users\\Ahmad\\OneDrive - Algonquin College\\NEXUS\\z~MISC\\Classroom\\notes.txt"	
+		}
+    },
+    "database": {
+      "connectionString": "Server=myServer;Database=myDatabase;User=myUser;Password=myPassword;"
+    },
+    "logging": {
+      "logLevel": "INFO",
+      "logFilePath": "C:\\Logs\\myScript.log"
+    },
+    "apiKeys": {
+      "weatherApiKey": "YOUR_API_KEY_HERE",
+      "paymentGatewayApiKey": "ANOTHER_API_KEY"
+    },
+    "features": {
+      "featureAEnabled": true,
+      "featureBEnabled": false
+    }
+  }

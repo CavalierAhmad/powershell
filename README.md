@@ -1,16 +1,32 @@
+# My CLI Project
+
+## Table of Contents
+
+- [!](#!)
+- [TODO](#todo)
+- [Set Up](#set-up-repository)
+- [Disable "Loading profiles took X ms" message](#disable-loading-profiles-took-x-ms-message)
+- [Modules](#modules)
+- [Changing Text Color](#changing-text-color)
+- [Hash Tables](#hash-tables)
+- [JSON Manipulation](#json-manipulation)
+- [Cryptography (Encryption and Decryption)](#cryptography)
+- [References](#references)
+
+---
+
 ## !
 
 Do not use `echo` anymore, it does not work with `-foregroundcolor`
+
+---
 
 ## TODO
 
 https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml?view=powershell-7.3&viewFallbackFrom=powershell-7.1
 
-- [ ] After recently learning about hashtables and JSON, from now on, variables, cmds (list), tasks, bills, passwords, and more will be stored as JSON and loaded as HASH for manipulation
-  - [x] Move variables to JSON
-  - [x] Create script which convert .json to .ps1
-  - [ ] Introduce CRUD to Bills
-  - [ ] Introduce CRUD to passwords
+- [ ] Introduce CRUD to Bills
+- [ ] Introduce CRUD to passwords
 - [ ] Create custom CRUD functions to accelerate hash-json convertions
 - [x] **SecretsModule**: Learn to enrypt and decrypt passwords to be stored in json
 - [ ] **BillsModule**: Imitate Excel
@@ -76,6 +92,8 @@ TODO:
 
 finish <ID>  # same as update <ID> -done
 
+---
+
 ## Set Up Repository
 
 To clone this repo: `Win` + `X`, `I`
@@ -85,6 +103,8 @@ git clone https://github.com/CavalierAhmad/powershell #Can skip next step if ren
 ren "powershell" "WindowsPowerShell" #Not tested
 # git should be functional but test to make sure: git status
 ```
+
+---
 
 ## Disable "Loading profiles took X ms" message
 
@@ -105,18 +125,119 @@ Add **-nologo** to `"commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v
             },
 ```
 
+---
+
+## Modules
+
+Creating a PowerShell module is a great way to encapsulate and share reusable functions, cmdlets, and resources. Here's a basic example of a simple PowerShell module:
+
+Let's create a module named "MyModule" that contains a single custom function.
+
+1. Create a new directory for your module, typically within your PowerShell modules directory. You can find your modules directory by running the command: `$env:PSModulePath`.
+
+```powershell
+# Navigate to the modules directory
+cd $env:PSModulePath
+# Create a directory for your module
+New-Item -Name "MyModule" -ItemType "Directory"
+# Navigate into the module directory
+cd "MyModule"
+```
+
+2. Inside your module directory, create a new PowerShell script module file (`.psm1`) and name it `MyModule.psm1`. This file will contain your custom functions and cmdlets.
+
+```powershell
+# Create MyModule.psm1
+New-Item -Name "MyModule.psm1" -ItemType "File"
+```
+
+3. Edit the `MyModule.psm1` file with your custom function. For this example, let's create a simple function called `Get-HelloWorld`.
+
+```powershell
+# MyModule.psm1
+function Get-HelloWorld {
+    Write-Host "Hello, World from MyModule!"
+}
+```
+
+4. Save the file and exit the text editor.
+
+5. Create a module manifest file (`.psd1`) for your module. This manifest file provides metadata and information about your module.
+
+```powershell
+# Create MyModule.psd1
+New-ModuleManifest -Path "MyModule.psd1" -RootModule "MyModule.psm1"
+```
+
+6. Open the `MyModule.psd1` file with a text editor and add module information. At a minimum, you should specify the `ModuleVersion`, `Author`, and `Description`.
+
+```powershell
+# MyModule.psd1
+@{
+    ModuleVersion = '1.0'
+    Author = 'Your Name'
+    Description = 'A simple PowerShell module.'
+}
+```
+
+7. Save the file and exit the text editor.
+
+8. You can now import your module into your PowerShell session or scripts using the `Import-Module` cmdlet:
+
+```powershell
+Import-Module MyModule
+```
+
+9. Use your custom function from the module:
+
+```powershell
+Get-HelloWorld
+```
+
+That's it! You've created a basic PowerShell module with a custom function. You can continue to expand your module by adding more functions, cmdlets, and resources to make it more useful for your specific needs.
+
+---
+
 ## Changing text color
 **Examples:**
+
+#### Using ANSI Escape Code
+
+```powershell
+# Customize the prompt
+function prompt {
+    $grey = [char]27 + '[90m'  # ANSI escape code for grey text color
+    $reset = [char]27 + '[0m'  # ANSI escape code to reset text color
+
+    if ($PWD.Path -eq $workspace) {
+        "${grey}> ${reset}"
+    } elseif ($PWD.Path -like "*\NEXUS\*") {
+        $nexusPart = $PWD.Path -replace ".*\\NEXUS\\?", "NEXUS\"
+        "${grey}$nexusPart> ${reset}"
+    } elseif ($PWD.Path -like "*\NEXUS") {
+        "${grey}\NEXUS> ${reset}"
+# 🌱 <-- this emoji does not work on every machine
+    } else {
+        "${grey}$PWD`n> ${reset}"
+    }
+}
+```
+#### Using switches
+
 ```powershell
 write-host -foregroundcolor Red    # For warning
 write-host -backgroundcolor Yellow # For prompt
 ```
+
+---
 
 ## Hash Tables
 
 These are clever and useful uses of hash tables, read:
 
 https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-hashtable?view=powershell-7.3
+
+---
 
 ## JSON Manipulation
 
@@ -180,7 +301,7 @@ function converto-psob($hashtable){
 ##### Select one
 
 ```powershell
-$tmp = $psob | where {$_.website -eq "key"} # Select all in hashtable fulfilling criteria
+$tmp = $psob | where {$_.key -eq "keyname"} # Select all in hashtable fulfilling criteria
 $tmp | format-list                          # Display as list
 ```
 
@@ -188,7 +309,7 @@ $tmp | format-list                          # Display as list
 
 ```powershell
 $hash = cat ".json" | convertfrom-json -ashashtable
-$hash['key1'].y = "new value"
+$hash.$key.$subkey = "new value"
 $hash | convertto-json > .json
 ```
 
@@ -199,15 +320,91 @@ $hash.remove('key1')
 $hash | convertto-json > .json
 ```
 
-## Encryption
+---
 
-TODO, see secrets module
+## CRYPTOGRAPHY
 
+##### Generate an AES key
+```powershell
+# GENERATING A KEY
+$key = new-object byte[] 16 # Initialize a 16-byte key
+$RNG = New-Object System.Security.Cryptography.RNGCryptoServiceProvider
+$RNG.getBytes($key)         # Generate array of 16 random bytes
+$key > .\.key               # Store key, key is ready
+```
+##### ENCRYPT (Plaintext to Ciphertext)
+```powershell
+# ENCRYPTION
+$plaintext = "secret to be encrypted"
+$securestring = $plaintext | convertto-securestring -asplaintext -force
+    # or user input: $securestring = read-host -assecurestring
+$ciphertext = $securestring | convertfrom-securestring -key $key # LOCKED
+$ciphertext > .\.encrypted                                       # Store ciphertext
+```
+##### DECRYPT (Ciphertext to Plaintext)
+```powershell
+# DECRYPTION
+$ciphertext = cat .\.encrypted # Retrieve ciphertext and key
+$securestring = $ciphertext | convertto-securestring -key $key # Cannot be UNLOCKED without proper key
+$plaintext = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($securestring))
+```
 
+#### Future improvement
+Instead of using the key directly, use a derived key.
+Derived key are obtained from a password which is more memorable.
 
+**Learn more**:
 
+> The key is too hard to memorize. Is there a way to generate the same key using a password?
 
+Answer:
 
+>Yes, you can derive an encryption key from a password using a process called "key derivation." The idea is to use a password to generate a cryptographic key that can be used for encryption and decryption. PowerShell provides a way to do this using a password-based key derivation function (PBKDF) and a salt value for added security.
+
+>Here's how you can generate an encryption key from a password in PowerShell:
+
+1. **Choose a Strong Password:**
+
+   Start by choosing a strong and secure password that you can remember. The strength of the password is crucial for the security of the derived key.
+
+2. **Generate a Salt:**
+
+   A salt is a random value that is combined with the password to create variability in the derived key. This helps protect against attacks like rainbow tables. You should generate a unique salt for each use.
+
+   ```powershell
+   $salt = New-Object byte[] 16  # 16 bytes (128 bits) salt
+   $rngCsp = New-Object System.Security.Cryptography.RNGCryptoServiceProvider
+   $rngCsp.GetBytes($salt)
+   ```
+
+3. **Derive the Key:**
+
+   You can use the `Rfc2898DeriveBytes` class in PowerShell to derive the key from the password and salt using a PBKDF (e.g., PBKDF2). Here's an example:
+
+   ```powershell
+   $password = "YourStrongPassword"  # Replace with your password
+   $iterations = 10000  # Number of iterations (adjust as needed)
+   
+   $keyDerivation = New-Object System.Security.Cryptography.Rfc2898DeriveBytes $password, $salt, $iterations
+   $derivedKey = $keyDerivation.GetBytes(32)  # 32 bytes (256 bits) key
+   ```
+
+   In this example, `$iterations` represents the number of iterations used in the key derivation process. A higher number of iterations increases the computational effort required for key derivation and improves security.
+
+4. **Use the Derived Key:**
+
+   You can now use the derived key for encryption or decryption, such as with `ConvertTo-SecureString` and `ConvertFrom-SecureString`, as shown earlier in previous responses.
+
+>Remember to securely store the salt value along with the derived key, as you'll need it when you want to derive the key again during decryption. Additionally, ensure that the password you choose is strong and that you follow best practices for password security.
+
+>Key derivation from a password is a common technique for encrypting data with a user-supplied passphrase. It allows you to use something easier to remember (the passphrase) to derive a strong encryption key.
+
+---
+
+## References
+[1] https://medium.com/@sumindaniro/encrypt-decrypt-data-with-powershell-4a1316a0834b
+[2] https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-hashtable?view=powershell-7.3
+[3] https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml?view=powershell-7.3&viewFallbackFrom=powershell-7.1
 
 ---
 
