@@ -1,10 +1,16 @@
 ### PowerShell Profile Script
 
 # Set the working directory
-Set-Location "$profile\.."
-$workspace = split-path $profile -parent # Profile parent dir
+$origin = "$profile\.."
+Set-Location $origin
 
-echo "Loading variables..."       ; . ".\ressources\load-variables"
+Import-Module .\Modules\JsonAdapter
+
+# Load JSON settings, calling it "DOMAIN" similarly to "environment"
+$DOMAIN = cat .\config.json | ConvertFrom-Json -AsHashtable
+
+echo "Loading variables..."
+. $DOMAIN.paths.json.variables
 echo "Loading aliases..."         ; . ".\ressources\aliases"
 echo "Loading functions..."       ; . ".\ressources\functions"
 echo "Loading banner..."          ; . ".\ressources\banner"
@@ -13,12 +19,14 @@ echo "Importing task modules..."  ; . ".\TaskModule"
 # echo " Loading tasks into array
 # echo " Loading tasklist header
 
+# Set UI
+
 # Set console title
-$Host.UI.RawUI.WindowTitle = "MyTerminal"
+$Host.UI.RawUI.WindowTitle = "MyTerminal" # from json 
 
 # Set console color
-$Host.UI.RawUI.BackgroundColor = "Black"
-$Host.UI.RawUI.ForegroundColor = "DarkYellow"
+$Host.UI.RawUI.BackgroundColor = "Black" # from json
+$Host.UI.RawUI.ForegroundColor = "DarkYellow" # from json
 
 # TODO: Put these in display.ps1
 

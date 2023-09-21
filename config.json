@@ -1,9 +1,13 @@
 {
-	"filePaths": {
-		"origin": "C:\\Users\\ahmad\\Documents\\PowerShell",
+	"consoleSettings":{
+		"windowTitle": "MyTerminal",
+		"backgroundColor": "Black",
+		"foregroundColor": "DarkYellow"
+	},
+	"paths": {
 		"nexus": "C:\\Users\\Ahmad\\ONEDRI~1\\NEXUS",
 		"AESkey": "C:\\Users\\Ahmad\\OneDrive - Algonquin College\\NEXUS\\z~MISC\\KEYS\\.key",
-		"JSON": {
+		"json": {
 			"assignments": ".\\JSON\\assignments.json",
 			"bills": ".\\JSON\\bills.json",
 			"chores": ".\\JSON\\chores.json",
@@ -36,4 +40,4 @@
       "featureAEnabled": true,
       "featureBEnabled": false
     }
-  }
+}
