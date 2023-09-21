@@ -109,6 +109,7 @@ ren "powershell" "WindowsPowerShell" #Not tested
 ## Disable "Loading profiles took X ms" message
 
 To disable the "Loading profiles took X ms" message, go to [C:\Users\ahmad\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json](C:/Users/ahmad/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState)
+(change `ahmad` to actual username)
 
 Add **-nologo** to `"commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"`:
 ```json
