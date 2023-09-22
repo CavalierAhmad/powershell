@@ -4,3 +4,8 @@ elseif (-not $background){write-host $string -ForegroundColor $foreground -nonew
 elseif (-not $foreground){write-host $string -BackgroundColor $background -nonewline}
 else   {write-host $string -ForegroundColor $foreground -BackgroundColor $background -nonewline}
 }
+
+function ask ($prompt, $foregroundColor, $backgroundColor) {
+    show $prompt $foregroundColor $backgroundColor
+    return $Host.UI.ReadLine()
+}

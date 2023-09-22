@@ -7,6 +7,6 @@
   "downloads": "C:\\Users\\Ahmad\\Downloads",
   "market": "https://www.facebook.com/marketplace/you/selling",
   "bills": "C:\\Users\\Ahmad\\OneDrive - Algonquin College\\NEXUS\\HOME\\BILLS",
-  "mathbook": "$paths.classroom.mathbook",
+  "mathbook": "$domain.paths.classroom.mathbook",
   "brightspace": "https://brightspace.algonquincollege.com/d2l/lms/grades/my_grades/main.d2l?ou=544141"
 }

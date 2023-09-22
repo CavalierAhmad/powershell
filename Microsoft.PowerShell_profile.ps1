@@ -1,32 +1,39 @@
 ### PowerShell Profile Script
 
 # Set the working directory
-$origin = "$profile\.."
-Set-Location $origin
+cd "$profile\.."
+$origin = $PWD.Path
 
-Import-Module .\Modules\JsonAdapter
+# Modules
+Import-Module .\Modules\AssignmentManager\AssignmentManager.psm1 # TO DO           last
+Import-Module .\Modules\BillManager\BillManager.psm1             # TODO PRIORITY
+Import-Module .\Modules\ChoreManager\ChoreManager.psm1           # TO DO           low
+Import-Module .\Modules\Colors\Colors.psm1                       # TO DO           low 
+Import-Module .\Modules\CommonFunctions\CommonFunctions.psm1     # TO DO           med
+Import-Module .\Modules\CredentialManager\CredentialManager.psm1 # TODO           high
+Import-Module .\Modules\Cryptography\Cryptography.psm1
+Import-Module .\Modules\EventManager\EventManager.psm1           # TODO           high
+Import-Module .\Modules\JsonAdapter\JsonAdapter.psm1
+Import-Module .\Modules\TaskManager\TaskManager.psm1             # TO DO           med
+Import-Module .\Modules\UserInputProcessor\UserInputProcessor.psm1
 
-# Load JSON settings, calling it "DOMAIN" similarly to "environment"
-$DOMAIN = cat .\config.json | ConvertFrom-Json -AsHashtable
+# Load DOMAIN, which represents the environment data of this powershell session
+$DOMAIN = fromjson .\config.json
 
-echo "Loading variables..."
-. $DOMAIN.paths.json.variables
-echo "Loading aliases..."         ; . ".\ressources\aliases"
-echo "Loading functions..."       ; . ".\ressources\functions"
-echo "Loading banner..."          ; . ".\ressources\banner"
-echo "Importing task modules..."  ; . ".\TaskModule"
-# echo " Creating array # size = 35^2
-# echo " Loading tasks into array
-# echo " Loading tasklist header
+# Import DOMAIN variables and aliases
+. .\Scripts\import-variables
+. .\Scripts\import-aliases
+# Import JSON files
+. .\Scripts\import-assignments # academic and udemy
+. .\Scripts\import-bills       # bills, revenu, and expenses
+. .\Scripts\import-chores      # house
+. .\Scripts\import-events      # work schedule, regular transits, birthdays, document expiration
+. .\Scripts\import-tasks       # one-time tasks and errands
 
-# Set UI
-
-# Set console title
-$Host.UI.RawUI.WindowTitle = "MyTerminal" # from json 
-
-# Set console color
-$Host.UI.RawUI.BackgroundColor = "Black" # from json
-$Host.UI.RawUI.ForegroundColor = "DarkYellow" # from json
+# Set UI settings
+$Host.UI.RawUI.WindowTitle = $DOMAIN.consoleSettings.windowTitle # "MyTerminal" from json
+$Host.UI.RawUI.BackgroundColor = $DOMAIN.consoleSettings.backgroundColor
+$Host.UI.RawUI.ForegroundColor = $DOMAIN.consoleSettings.foregroundColor
 
 # TODO: Put these in display.ps1
 
@@ -46,8 +53,5 @@ echo "`nTODAY IS: $date $time";wait
 echo "`nPENDING TASKS (make pretty table):";wait
 echo "          Task     |   Time Left    ";wait
 echo "    --------------------------------`n";wait
-
-# Display tasks
-. ".\ressources\tasklist"  # change to ./printtasks using iteration
 
 echo "`nType 'cmds' to view common commands, 'newv' to add variable:`n"

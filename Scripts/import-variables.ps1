@@ -1,8 +1,5 @@
-# Locate variables
-$jsonfile = $filepaths.json.variables
-
 # Import variables from JSON, convert to hash
-$hashtable = cat $jsonfile | ConvertFrom-Json -AsHashtable
+$hashtable = fromjson $DOMAIN.paths.json.variables
 
 # Initialize an empty script string
 $scriptString = ""
@@ -15,6 +12,5 @@ foreach ($key in $hashtable.keys) {
     echo $scriptLine
 }
 
-$scriptString > .\tmp.ps1   # Move script string to script file
-. .\tmp.ps1                 # Run script
-rm .\tmp.ps1                # Remove script
+$scriptString > .\tmp\tmp.ps1   # Move script string to script file
+. .\tmp\tmp.ps1                 # Run script

@@ -3,9 +3,6 @@
 $1 = [char]27 + '[31m'  # ANSI escape code for red text color
 $0 = [char]27 + '[0m'  # ANSI escape code to reset text color
 
-$aeskey = generate-key
-$paths = @{AESkey=$aeskey}
-
 function encrypt ($plaintext, $key) {
     if (-not $plaintext){Write-Host "Must pass plaintext string to encrypt!" -ForegroundColor Red ; return "${1}error${0}"}
     if (-not $key){
@@ -35,7 +32,7 @@ function decrypt ($ciphertext, $key) {
     }
 }
 
-function generate-key {
+function new-key {
     # GENERATING A KEY
     $key = new-object byte[] 16 # Initialize a 16-byte key
     $RNG = New-Object System.Security.Cryptography.RNGCryptoServiceProvider
