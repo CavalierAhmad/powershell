@@ -23,15 +23,7 @@ Do not use `echo` anymore, it does not work with `-foregroundcolor`
 
 ## TODO
 
-https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml?view=powershell-7.3&viewFallbackFrom=powershell-7.1
-
-- [ ] Introduce CRUD to Bills
-- [ ] Introduce CRUD to passwords
-- [ ] Create custom CRUD functions to accelerate hash-json convertions
-- [x] **SecretsModule**: Learn to enrypt and decrypt passwords to be stored in json
-- [ ] **BillsModule**: Imitate Excel
-- [ ] **TasksModule**: Introduce CRUD to tasks
-- [ ] Separate display procedure from loading procedure
+See TODO comments in profile
 
 ### Details
 
