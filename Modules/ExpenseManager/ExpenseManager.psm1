@@ -5,7 +5,6 @@
 #             transform done
 #                 get-rates done
 #                 get-diff done
-#             get-data#todo
 #             convertto-PSO #todo
 #         merge-dataset #todo
 #         apply-style #todo
@@ -62,7 +61,7 @@ function create-dataset ($arrayOfExpenses) {
         $data.m += $processedHashtable.monthly
         $data.b += $processedHashtable.biweekly
         $data.d += $processedHashtable.daily
-        $plainRow = [PSCustomObject]$processedHashtable              # convert hashtable to table row
+        $plainRow = ExpenseManager\convertto-PSO $processedHashtable # convert hashtable to table row
         $table += $plainRow                                          # add row to table
     }
 
@@ -128,12 +127,29 @@ function apply-style ($plainTable) {
     return "applied style"
 }
 
-function aggregate ([array]$table) {
-    
-}
-
-# function aggregate (OptionalParameters) {
-    
-# }
+function convertto-PSO ($hashtable){
+    $diff = $hashtable.timeDiff
+    $t
+    $unit = ""
+        if ($diff.Days -ne 0){$t = $diff.Days ; $unit = ""}
+    elseif ($diff.Hours -ge 0){$t = $diff.Hours ; $unit = (fgr "hours")}
+    elseif ($diff.Minutes -ge 0){$t = $diff.Minutes ; $unit = (fgr "minutes")}
+    else   {$t = $diff.Days ; $unit = ""}
+    $pso = [PSCustomObject]@{
+        ID = $hashtable.id
+        Name = $hashtable.name
+        Monthly = $hashtable.monthly
+        # $roundedDouble = [math]::Round($originalDouble, 2)
+        Biweekly = $hashtable.biweekly
+        Daily = $hashtable.daily
+        "Time Remaining" = "" + $t + $unit
+        Deadline = $hashtable.date.ToString("MMM-dd")
+        Status = $hashtable.status
+        Source = $hashtable.source
+        "Is Variable?" = $hashtable.isVariable
+        f = "" + $hashtable.frequency.number + $hashtable.frequency.unit
+    }
+    return $pso
+} 
 
 function format-PSO ($plainPSO) {}
