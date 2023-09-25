@@ -1,2 +1,2 @@
-$chores = fromjson $DOMAIN.paths.json.chores
+$chores = fromjson $DOMAIN.json.chores
 $chores += [ordered]@{dummy=0}

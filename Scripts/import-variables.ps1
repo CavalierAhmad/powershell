@@ -1,5 +1,5 @@
 # Import variables from JSON, convert to hash
-$hashtable = fromjson $DOMAIN.paths.json.variables
+$hashtable = fromjson $DOMAIN.json.variables
 
 # Initialize an empty script string
 $scriptString = ""

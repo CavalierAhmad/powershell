@@ -2,20 +2,12 @@
 	"consoleSettings":{
 		"windowTitle": "MyTerminal",
 		"backgroundColor": "Black",
-		"foregroundColor": "DarkYellow"
+		"foregroundColor": "DarkYellow",
+		"foregroundANSI": "`e[33m"
 	},
 	"paths": {
 		"nexus": "C:\\Users\\Ahmad\\ONEDRI~1\\NEXUS",
 		"AESkey": "C:\\Users\\Ahmad\\OneDrive - Algonquin College\\NEXUS\\z~MISC\\KEYS\\.key",
-		"json": {
-			"assignments": ".\\JSON\\assignments.json",
-			"bills": ".\\JSON\\bills.json",
-			"chores": ".\\JSON\\chores.json",
-			"credentials": ".\\JSON\\credentials.json",
-			"events": ".\\JSON\\events.json",
-			"tasks": ".\\JSON\\tasks.json",
-			"variables": ".\\JSON\\variables.json"
-		},
 		"modules": ".\\Modules",
 		"ressources": ".\\Ressources",
 		"scripts": ".\\Scripts",
@@ -26,6 +18,15 @@
 			"notes":"C:\\Users\\Ahmad\\OneDrive - Algonquin College\\NEXUS\\z~MISC\\Classroom\\notes.txt"	
 		}
     },
+	"json": {
+		"assignments": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\AssignmentManager\\assignments.json",
+		"chores": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\ChoreManager\\chores.json",
+		"credentials": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\CredentialManager\\credentials.json",
+		"events": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\EventManager\\events.json",
+		"expenses": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\ExpenseManager\\expenses.json",
+		"tasks": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\TaskManager\tasks.json",
+		"variables": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\VariablesManager\\variables.json"
+	},
     "database": {
       "connectionString": "Server=myServer;Database=myDatabase;User=myUser;Password=myPassword;"
     },

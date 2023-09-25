@@ -1,0 +1,14 @@
+START _profile.ps1
+Imported modules
+Loaded config
+Imported .\Scripts
+Set UI
+PROFILE -> welcome.ps1
+slowbanner
+datetime
+welcome.ps1 -> PROFILE
+PROFILE -> summary.ps1
+Loaded expenses to DOMAIN from JSON
+summary.ps1 -> PROFILE
+FUNCTION: create-dataset
+RETURN TO CALLER

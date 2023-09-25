@@ -1,8 +1,8 @@
 # JsonAdapter.psm1
 # tested: operational
 
-$red = [char]27 + '[31m'  # ANSI escape code for grey text color
-$reset = [char]27 + '[0m'  # ANSI escape code to reset text color
+# $red = [char]27 + '[31m'  # ANSI escape code for grey text color
+# $reset = [char]27 + '[0m'  # ANSI escape code to reset text color
 
 function toJson ($hashtable) {
     if (-not ($hashtable -and $hashtable -is [ordered])){

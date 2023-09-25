@@ -1,2 +1,2 @@
-$events = fromjson $DOMAIN.paths.json.events
+$events = fromjson $DOMAIN.json.events
 $events += [ordered]@{dummy=0}

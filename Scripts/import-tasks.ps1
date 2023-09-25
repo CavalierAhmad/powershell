@@ -1,2 +1,2 @@
-$tasks = fromjson $DOMAIN.paths.json.tasks
+$tasks = fromjson $DOMAIN.json.tasks
 $tasks += [ordered]@{dummy=0}
