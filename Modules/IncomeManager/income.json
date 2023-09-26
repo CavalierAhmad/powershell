@@ -1,0 +1,18 @@
+{
+    "UBER": {
+        "amount": 500.00,
+        "frequency": {
+            "number": 7,
+            "unit": "d"
+        },
+        "date": "2023-09-12T00:00:00-04:00"
+    },
+    "CAF": {
+        "amount": 60,
+        "frequency": {
+            "number": 15,
+            "unit": "d"
+        },
+        "date": "2023-09-12T00:00:00-04:00"
+    }
+}

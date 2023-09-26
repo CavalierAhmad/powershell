@@ -10,5 +10,3 @@ welcome.ps1 -> PROFILE
 PROFILE -> summary.ps1
 Loaded expenses to DOMAIN from JSON
 summary.ps1 -> PROFILE
-FUNCTION: create-dataset
-RETURN TO CALLER

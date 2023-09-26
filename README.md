@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [!](#!)
+- [! Critical Discoveries](#!)
 - [TODO](#todo)
 - [Set Up](#set-up-repository)
 - [Disable "Loading profiles took X ms" message](#disable-loading-profiles-took-x-ms-message)
@@ -15,9 +15,17 @@
 
 ---
 
-## !
+## ! CRITICAL DISCOVERIES
 
-Do not use `echo` anymore, it does not work with `-foregroundcolor`
+- `get-content x.json` DOES NOT RETURN A STRING.
+  This interferes with encryption and decryption, making files undecipherable.
+```powershell
+  $notRaw = get-content      x.json
+     $raw = get-content -raw x.json
+  $notRaw.gettype().name   # outputs Object[]
+  $raw.gettype().name      # outputs String
+```
+- The `echo` alias does not work with `-foregroundcolor`. Aliases are to be avoided
 
 ---
 

@@ -147,7 +147,7 @@ function convertto-PSO ($hashtable){
         Status = $hashtable.status
         Source = $hashtable.source
         "Is Variable?" = $hashtable.isVariable
-        f = "" + $hashtable.frequency.number + $hashtable.frequency.unit
+        "f" = "" + $hashtable.frequency.number + $hashtable.frequency.unit
     }
     return $pso
 } 

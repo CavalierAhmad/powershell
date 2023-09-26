@@ -1,204 +1,184 @@
-{
-    "expenses": [
-        {
-            "id": "X-00",
-            "name": "Car Payment",
-            "amount": 199.22,
-            "frequency": {
-                "number": 14,
-                "unit": "d"
-            },
-            "date": "2023-09-18T00:00:00-04:00",
-            "status": "automatic",
-            "type": "personal",
-            "isVariable": false,
-            "source": "chequing"
+[
+    {
+        "id": "X-00",
+        "name": "Car Payment",
+        "amount": 199.22,
+        "frequency": {
+            "number": 14,
+            "unit": "d"
         },
-        {
-            "id": "X-01",
-            "name": "Car Insurance",
-            "amount": 125.81,
-            "frequency": {
-                "number": 1,
-                "unit": "m"
-            },
-            "date": "2023-09-16T00:00:00-04:00",
-            "status": "automatic",
-            "type": "personal",
-            "isVariable": false,
-            "source": "chequing"
+        "date": "2023-09-18T00:00:00-04:00",
+        "status": "automatic",
+        "type": "personal",
+        "isVariable": false,
+        "source": "chequing"
+    },
+    {
+        "id": "X-01",
+        "name": "Car Insurance",
+        "amount": 125.81,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
         },
-        {
-            "id": "X-02",
-            "name": "Phone Data",
-            "amount": 63.24,
-            "frequency": {
-                "number": 1,
-                "unit": "m"
-            },
-            "date": "2023-09-16T00:00:00-04:00",
-            "status": "unpaid",
-            "type": "personal",
-            "isVariable": false,
-            "source": "chequing"
+        "date": "2023-09-16T00:00:00-04:00",
+        "status": "automatic",
+        "type": "personal",
+        "isVariable": false,
+        "source": "chequing"
+    },
+    {
+        "id": "X-02",
+        "name": "Phone Data",
+        "amount": 63.24,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
         },
-        {
-            "id": "X-03",
-            "name": "Mortgage",
-            "amount": 450.00,
-            "frequency": {
-                "number": 1,
-                "unit": "m"
-            },
-            "date": "2023-09-25T00:00:00-04:00",
-            "status": "unsecured",
-            "type": "personal",
-            "isVariable": false,
-            "source": "chequing"
+        "date": "2023-09-16T00:00:00-04:00",
+        "status": "unpaid",
+        "type": "personal",
+        "isVariable": false,
+        "source": "chequing"
+    },
+    {
+        "id": "X-03",
+        "name": "Mortgage",
+        "amount": 450.00,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
         },
-        {
-            "id": "X-04",
-            "name": "DJ Credit Card",
-            "amount": 378.00,
-            "frequency": {
-                "number": 1,
-                "unit": "m"
-            },
-            "date": "2023-09-24T00:00:00-04:00",
-            "status": "unpaid",
-            "type": "personal",
-            "isVariable": true,
-            "source": "chequing"
+        "date": "2023-09-25T00:00:00-04:00",
+        "status": "unsecured",
+        "type": "personal",
+        "isVariable": false,
+        "source": "chequing"
+    },
+    {
+        "id": "X-04",
+        "name": "DJ Credit Card",
+        "amount": 378.00,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
         },
-        {
-            "id": "X-05",
-            "name": "TD Credit Card",
-            "amount": 194.00,
-            "frequency": {
-                "number": 1,
-                "unit": "m"
-            },
-            "date": "2023-09-27T00:00:00-04:00",
-            "status": "unpaid",
-            "type": "personal",
-            "isVariable": true,
-            "source": "chequing"
+        "date": "2023-09-24T00:00:00-04:00",
+        "status": "unpaid",
+        "type": "personal",
+        "isVariable": true,
+        "source": "chequing"
+    },
+    {
+        "id": "X-05",
+        "name": "TD Credit Card",
+        "amount": 194.00,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
         },
-        {
-            "id": "X-06",
-            "name": "Fairstone Loan",
-            "amount": 210.00,
-            "frequency": {
-                "number": 1,
-                "unit": "m"
-            },
-            "date": "2023-09-17T00:00:00-04:00",
-            "status": "unpaid",
-            "type": "personal",
-            "isVariable": false,
-            "source": "chequing"
+        "date": "2023-09-27T00:00:00-04:00",
+        "status": "unpaid",
+        "type": "personal",
+        "isVariable": true,
+        "source": "chequing"
+    },
+    {
+        "id": "X-06",
+        "name": "Fairstone Loan",
+        "amount": 210.00,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
         },
-        {
-            "id": "X-07",
-            "name": "Gazifere",
-            "amount": 38.98,
-            "frequency": {
-                "number": 27,
-                "unit": "d"
-            },
-            "date": "2023-09-14T00:00:00-04:00",
-            "status": "automatic + uncompensated",
-            "type": "household",
-            "isVariable": true,
-            "source": "chequing"
+        "date": "2023-09-17T00:00:00-04:00",
+        "status": "unpaid",
+        "type": "personal",
+        "isVariable": false,
+        "source": "chequing"
+    },
+    {
+        "id": "X-07",
+        "name": "Gazifere",
+        "amount": 38.98,
+        "frequency": {
+            "number": 27,
+            "unit": "d"
         },
-        {
-            "id": "X-08",
-            "name": "Hydro-Quebec",
-            "amount": 46.40,
-            "frequency": {
-                "number": 60,
-                "unit": "d"
-            },
-            "date": "2023-09-28T00:00:00-04:00",
-            "status": "unpaid + uncompensated",
-            "type": "household",
-            "isVariable": true,
-            "source": "?"
+        "date": "2023-09-14T00:00:00-04:00",
+        "status": "automatic + uncompensated",
+        "type": "household",
+        "isVariable": true,
+        "source": "chequing"
+    },
+    {
+        "id": "X-08",
+        "name": "Hydro-Quebec",
+        "amount": 46.40,
+        "frequency": {
+            "number": 60,
+            "unit": "d"
         },
-        {
-            "id": "X-09",
-            "name": "Wifi",
-            "amount": 14.37,
-            "frequency": {
-                "number": 1,
-                "unit": "m"
-            },
-            "date": "2023-09-21T00:00:00-04:00",
-            "status": "automatic + uncompensated",
-            "type": "household",
-            "isVariable": false,
-            "source": "chequing"
+        "date": "2023-09-28T00:00:00-04:00",
+        "status": "unpaid + uncompensated",
+        "type": "household",
+        "isVariable": true,
+        "source": "?"
+    },
+    {
+        "id": "X-09",
+        "name": "Wifi",
+        "amount": 14.37,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
         },
-        {
-            "id": "X-10",
-            "name": "Youtube Music",
-            "amount": 6,
-            "frequency": {
-                "number": 1,
-                "unit": "m"
-            },
-            "date": "2023-09-21T00:00:00-04:00",
-            "status": "Date is incorrect.",
-            "type": "personal",
-            "isVariable": false,
-            "source": "credit"
+        "date": "2023-09-21T00:00:00-04:00",
+        "status": "automatic + uncompensated",
+        "type": "household",
+        "isVariable": false,
+        "source": "chequing"
+    },
+    {
+        "id": "X-10",
+        "name": "Youtube Music",
+        "amount": 6,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
         },
-        {
-            "id": "X-11",
-            "name": "Fuel",
-            "amount": 20,
-            "frequency": {
-                "number": 1,
-                "unit": "d"
-            },
-            "date": null,
-            "status": null,
-            "type": "personal",
-            "isVariable": true,
-            "source": "chequing/credit"
+        "date": "2023-09-21T00:00:00-04:00",
+        "status": "Date is incorrect.",
+        "type": "personal",
+        "isVariable": false,
+        "source": "credit"
+    },
+    {
+        "id": "X-11",
+        "name": "Fuel",
+        "amount": 20,
+        "frequency": {
+            "number": 1,
+            "unit": "d"
         },
-        {
-            "id": "X-12",
-            "name": "Food",
-            "amount": 10,
-            "frequency": {
-                "number": 1,
-                "unit": "d"
-            },
-            "date": null,
-            "status": null,
-            "type": "personal",
-            "isVariable": true,
-            "source": "chequing/credit"
-        }
-    ],
-    "income": {
-        "UBER": {
-            "amount": 500.00,
-            "frequency": {
-                "number": 7,
-                "unit": "d"
-            },
-            "date": "2023-09-12T00:00:00-04:00"
+        "date": null,
+        "status": null,
+        "type": "personal",
+        "isVariable": true,
+        "source": "chequing/credit"
+    },
+    {
+        "id": "X-12",
+        "name": "Food",
+        "amount": 10,
+        "frequency": {
+            "number": 1,
+            "unit": "d"
         },
-        "CAF": {
-            "amount": 60,
-            "frequency": {
-                "number": 15,
-                "unit": "d"
-            },
-            "date": "2023-09-12T00:00:00-04:00"
-        }
+        "date": null,
+        "status": null,
+        "type": "personal",
+        "isVariable": true,
+        "source": "chequing/credit"
     }
-}
+]
