@@ -1,0 +1,22 @@
+{
+    "documents": {
+        "inspection": {
+            "last performed": "2023-05-25",
+            "expiration": "?"
+        },
+        "license": {
+            "number": null,
+            "expiration": null
+        },
+        "registration": {
+            "expiration": null
+        },
+        "insurance": {
+            "policy": "BHDB54H4",
+            "expiration": "2024-05-01"
+        }
+    },
+    "maintenance": {
+        
+    }
+}

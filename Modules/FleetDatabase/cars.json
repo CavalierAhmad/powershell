@@ -1,0 +1,42 @@
+{
+    "hyundai": {
+        "description": {
+            "vin": "KMHD84LF5HU131636",
+            "plate": "83FAEM",
+            "year": 2017,
+            "brand": "Hyundai",
+            "model": "Elantra GL",
+            "cylinder": 4,
+            "drivetrain": "front-wheel drive",
+            "horsepower": "147 - 201 hp",
+            "torque": "132 - 195 ft-lb",
+            "color": {
+                "code": "RY9",
+                "name": "Phoenix Orange Pearl"
+            },
+            "boltPattern": "?",
+            "tires": "P205/55R16",
+            "initialOdometer": 107060,
+            "keyNumber": "M0457"
+        },
+        "contract": {
+            "date": "2023-05-01",
+            "length": "72 months",
+            "warrantyExpiration": {
+                "time": "60 months",
+                "distance": 100000
+            },
+            "payment": {
+                "amount": 199.22,
+                "frequency": "biweekly"
+            }
+        },
+        "stats": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\FleetDatabase\\hyundaiStats.json"
+    },
+    "mitsubishi": {
+        "description": {}
+    },
+    "honda": {
+        "description": {}
+    }
+}

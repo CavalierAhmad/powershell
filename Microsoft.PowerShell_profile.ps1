@@ -16,8 +16,13 @@ Import-Module .\Modules\CredentialManager\CredentialManager.psm1 -verbose # TODO
 Import-Module .\Modules\Cryptography\Cryptography.psm1 -verbose
 Import-Module .\Modules\EventManager\EventManager.psm1     -verbose       # TODO           high
 Import-Module .\Modules\ExpenseManager\ExpenseManager.psm1  -verbose      # TODO PRIORITY
+Import-Module .\Modules\FleetDatabase\FleetDatabase.psm1
+Import-Module .\Modules\HomeData\HomeData.psm1
+Import-Module .\Modules\IncomeManager\IncomeManager.psm1 -verbose
+Import-Module .\Modules\InputControl\InputControl.psm1 -verbose
 Import-Module .\Modules\JsonAdapter\JsonAdapter.psm1 -verbose
-Import-Module .\Modules\StyleModule\StyleModule.psm1     -verbose        #todo add style by chaining functions s.blink().u().i()
+Import-Module .\Modules\StorageManager\StorageManager.psm1
+Import-Module .\Modules\StyleModule\StyleModule.psm1     -verbose         # To use style: "no style $(f "with style")"
 Import-Module .\Modules\TaskManager\TaskManager.psm1      -verbose        # TO DO           med
 Import-Module .\Modules\UserInputProcessor\UserInputProcessor.psm1 -verbose
 log 'Imported modules'
