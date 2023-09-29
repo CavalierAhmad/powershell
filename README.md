@@ -38,11 +38,11 @@ Follow these steps:
 cd $profile\..\..
 $pwd.path | scb
 ```
-CTRL + ,
-On left hand side, GO TO 'PowerShell'
-GO TO 'Starting directory'
-CTRL + V
-'Save'
+CTRL + ,  
+On left hand side, GO TO 'PowerShell' 
+GO TO 'Starting directory'  
+CTRL + V  
+'Save'  
 Return to Terminal (WIN + X .. I)
 
 ```powershell
