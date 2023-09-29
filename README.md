@@ -271,7 +271,7 @@ https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everythi
 ```powershell
 $key = "unique"                                 # Create unique key
 $val = @{subkey1 = "value" ; subkey2 = "value"} # Create new object respecting existing scopes
-$json = cat .json                              # Import .json file
+$json = cat -raw .json                          # Import .json file, notice -raw (very important)
 $hash = $json | convertfrom-json -ashashtable  # Convert JSON to hash table
 $hash.add($key,$val)                           # Append new object to hash table
 $json = $hash | convertto-json                 # Convert hash table to JSON
@@ -296,7 +296,7 @@ $json > .json                                  # Overwrite .json
 ##### Select all
 
 ```powershell
-$hash = cat ".json" | convertfrom-json -ashashtable
+$hash = cat -raw .json | convertfrom-json -ashashtable
 $psob = $hash | convertto-psob         # Convert hashtable into custom objects
 $psob | format-table -autoSize         # Display as table (optional)
 ```
@@ -322,7 +322,7 @@ $tmp | format-list                          # Display as list
 #### UPDATE JSON
 
 ```powershell
-$hash = cat ".json" | convertfrom-json -ashashtable
+$hash = cat -raw .json | convertfrom-json -ashashtable
 $hash.$key.$subkey = "new value"
 $hash | convertto-json > .json
 ```
@@ -358,7 +358,7 @@ $ciphertext > .\.encrypted                                       # Store ciphert
 ##### DECRYPT (Ciphertext to Plaintext)
 ```powershell
 # DECRYPTION
-$ciphertext = cat .\.encrypted # Retrieve ciphertext and key
+$ciphertext = cat -raw .\.encrypted # Retrieve ciphertext and key, DO NOT OMIT -raw
 $securestring = $ciphertext | convertto-securestring -key $key # Cannot be UNLOCKED without proper key
 $plaintext = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($securestring))
 ```
