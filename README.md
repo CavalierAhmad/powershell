@@ -29,6 +29,31 @@
 
 ---
 
+## Set Up Repository
+
+Follow these steps:
+
+`WIN` + `X` .. `I`
+```powersehll
+cd $profile\..\..
+$pwd.path | scb
+```
+CTRL + ,
+On left hand side, GO TO 'PowerShell'
+GO TO 'Starting directory'
+CTRL + V
+'Save'
+Return to Terminal (WIN + X .. I)
+
+```powershell
+git clone https://github.com/CavalierAhmad/powershell
+cd powershell
+git switch baby  # Switch to desired branch (optional)
+# Ready
+```
+
+---
+
 ## TODO
 
 See TODO comments in profile
@@ -91,18 +116,6 @@ TODO:
 ##### SPECIAL COMMANDS
 
 finish <ID>  # same as update <ID> -done
-
----
-
-## Set Up Repository (bad, need update)
-
-To clone this repo: `Win` + `X`, `I`
-```shell
-cd $home/Documents
-git clone https://github.com/CavalierAhmad/powershell #Can skip next step if rename ths repo?
-ren "powershell" "WindowsPowerShell" #Not tested
-# git should be functional but test to make sure: git status
-```
 
 ---
 
