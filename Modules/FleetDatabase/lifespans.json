@@ -1,0 +1,32 @@
+[
+    {
+        "part": "Brake Pads",
+        "time": 2190,
+        "distance": null
+    },
+    {
+        "part": "Summer Tires",
+        "time": 2190,
+        "distance": null
+    },
+    {
+        "part": "Winter Tires",
+        "time": 1460,
+        "distance": null
+    },
+    {
+        "part": "Engine Oil",
+        "time": 90,
+        "distance": 6000
+    },
+    {
+        "part": "Oil Filter",
+        "time": null,
+        "distance": null
+    },
+    {
+        "part": "Air Filter",
+        "time": null,
+        "distance": null
+    }
+]

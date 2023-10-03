@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Brake Pads",
+        "lastDate": "2023-08-08",
+        "lastMileage": null,
+        "status": "ok"
+    },
+    {
+        "name": "Engine Oil",
+        "lastDate": "2023-09-29",
+        "lastMileage": 118000,
+        "status": "ok"
+    },
+    {
+        "name": "Engine Oil Filter",
+        "lastDate": "2023-04-27",
+        "lastMileage": 107076,
+        "status": "ok"
+    },
+    {
+        "name": "Fluid Level",
+        "lastDate": "2023-09-29",
+        "lastMileage": 118000,
+        "status": "ok"
+    },
+    {
+        "name": "Air Filter",
+        "lastDate": "2023-04-27",
+        "lastMileage": 107076,
+        "status": "ok"
+    },
+    {
+        "name": "Climate Control Air Filter",
+        "lastDate": "2023-04-27",
+        "lastMileage": 107076,
+        "status": "ok"
+    },
+    {
+        "name": "Tires",
+        "lastDate": "2023-04-27",
+        "lastMileage": 107076,
+        "status": "! low depth, need replacement"
+    },
+    {
+        "name": "Lights",
+        "lastDate": "2023-09-29",
+        "lastMileage": 118000,
+        "status": "ok"
+    }
+]
