@@ -1,5 +1,6 @@
 $0       = $PSStyle.Reset  # remove all decorations
-$default = "`e[33m"        # default color, dark yellow
+$default = "`e[33m"        # default color, dark yellow # todo hardcode in config, not here
+function reset-color {$default}
 
 # EFFECTS
 $b      = $PSStyle.Bold
