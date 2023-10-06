@@ -31,6 +31,8 @@ function display ($request) {
 function new-viewTable { # TODO
 
     $rawTable = cat -raw "C:\Users\Ahmad\Documents\PowerShell\Modules\ExpenseManager\expenses.json" | ConvertFrom-Json
+    $plainTable = @()
+    $stylishTable = @()
 
     foreach ($row in $rawTable){
         # transform raw row to plain row
@@ -54,7 +56,7 @@ function options {echo "options plaeholder"}
 
 function transform ($row) { # TODO
     # calculate rates and returns stylized string on condition
-    $rates = calculate-rates $row.amount $row.frequency $row.isVariable #done
+    $rates = calculate-rates $row.amount $row.frequency #done
     # calculate time difference and applies style accordingly
     $timeLeft = calculate-timeLeft $row.nextPayment $row.finalPayment #todo
     # In JSON, change status to array using codes
@@ -83,6 +85,7 @@ function add-style (OptionalParameters) { # TODO
 }
 
 # Returns an array of three amounts: monthly, biweekly, daily
+# done
 function calculate-rates ($amount, $frequency, $isVariable) {
     $u = $frequency.unit
     $n = $frequency.number
@@ -90,35 +93,32 @@ function calculate-rates ($amount, $frequency, $isVariable) {
     $fortnightsPerYear = 365.25 / 14  # 1 y =  26.0893 f
     $fortnightsPerMonth = 2.17        # 1 m =   2.17   f
     $daysPerMonth = [System.DateTime]::DaysInMonth((Get-Date).Year, (Get-Date).Month)
-    $rates = @()
+    $rates = @(0,0,0)
     if ($u -eq 'y'){
         $rates[0] = $amount / ($n * 12)                  # 1 y = 12.0000 months
         $rates[1] = $amount / ($n * $fortnightsPerYear)  # 1 y = 26.0893 fortnights
         $rates[2] = $amount / ($n * $daysPerYear)        # 1 y = 365.250 days
     }
     elseif ($u -eq 'm'){
-        $monthly  = $amount / $n
-        $biweekly = $amount / ($n * $fortnightsPerMonth)
-        $daily    = $amount / ($n * $daysPerMonth)
-        return @($monthly, $biweekly, $daily)
+        $rates[0] = $amount / $n
+        $rates[1] = $amount / ($n * $fortnightsPerMonth)
+        $rates[2] = $amount / ($n * $daysPerMonth)
     }
     elseif ($u -eq 'd'){
-        $monthly  = $amount / ($n * $daysPerMonth)
-        $biweekly = $amount / ($n * 14)
-        $daily    = $amount / $n
-        return @($monthly,$biweekly,$daily)
+        $rates[0] = $amount / ($n * $daysPerMonth)
+        $rates[1] = $amount / ($n * 14)
+        $rates[2] = $amount / $n
     }
     else {
         return "Invalid frequency @ calculate-rates"
     }
 
-    for ($i = 0; $i -lt $rates.Length; $i++) {
-        $rate[$i] = "" + $rate[$i]
-        if ($isVariable){$rate[$i] = (i $rate[$i])}
-    }
-
-
     return $rates
+}
+
+# TODO
+function calculate-timeLeft (OptionalParameters) {
+    
 }
 
 
