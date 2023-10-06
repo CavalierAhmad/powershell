@@ -7,6 +7,3 @@ PROFILE -> welcome.ps1
 slowbanner
 datetime
 welcome.ps1 -> PROFILE
-PROFILE -> summary.ps1
-Loaded expenses to DOMAIN from JSON
-summary.ps1 -> PROFILE

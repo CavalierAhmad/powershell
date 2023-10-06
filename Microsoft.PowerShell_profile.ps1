@@ -47,22 +47,5 @@ $Host.UI.RawUI.BackgroundColor = $DOMAIN.consoleSettings.backgroundColor
 $Host.UI.RawUI.ForegroundColor = $DOMAIN.consoleSettings.foregroundColor
 log 'Set UI'
 
-# Pause
-# Write-Host
-# $invert
-# pause
-
 # Welcome user
 . .\Scripts\welcome.ps1
-
-# Display today's summary
-. .\Scripts\summary.ps1
-
-# # Display tasklist header
-# echo "`nPENDING TASKS (make pretty table):";wait
-# echo "          Task     |   Time Left    ";wait
-# echo "    --------------------------------`n";wait
-
-# echo "`nType 'cmds' to view common commands, 'newv' to add variable:`n" 
-
-# log "END OF _profile.ps1" >> $logFile

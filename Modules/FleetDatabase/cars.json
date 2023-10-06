@@ -27,6 +27,7 @@
                 "distance": 100000
             },
             "payment": {
+                "cost": null,
                 "amount": 199.22,
                 "frequency": "biweekly"
             }
