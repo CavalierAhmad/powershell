@@ -1,4 +1,13 @@
 # See #todo below
+
+# new-report
+    # display
+        #new-viewTable
+            # transform
+                # calculate rates
+                # clalculate time left
+            # emphasize
+            
 function new-report {
     display "expenses"
     display "raw table"
@@ -19,54 +28,97 @@ function display ($request) {
     }
 }
 
-function new-viewTable {
-    $rawTable = cat -raw "C:\Users\Ahmad\Documents\PowerShell\Modules\ExpenseManager\expenses.json" | ConvertFrom-Json
-    foreach ($row in $rawTable){
+function new-viewTable { # TODO
 
-        # calculate rates and returns stylized string on condition
-        $rates = calculate-rates $row.amount $row.frequency #todo
-        # calculate time difference and applies style accordingly
-        $timeLeft = calculate-timeLeft $row.nextPayment $row.finalPayment #todo
-        # In JSON, change status to array using codes
-        $status = $null #todo
-        # simply convert deadlines to MMM-d or YYYY-MMM-d
-        $deadlines = $null #todo
-        
-        $newRow = [PSCustomObject]@{
-            ID = $row.id
-            "Name of Bill" = $row.name
-            Monthly = $rates[0]
-            Biweekly = $rates[1]
-            Daily = $rates[2]
-            "Time Left" = $timeLeft
-            Status = $status
-            Source = $row.source
-            Deadline = $deadlines[0]
-            "Final Deadline" = $deadlines[1]
-        }
+    $rawTable = cat -raw "C:\Users\Ahmad\Documents\PowerShell\Modules\ExpenseManager\expenses.json" | ConvertFrom-Json
+
+    foreach ($row in $rawTable){
+        # transform raw row to plain row
+        $plainRow = transform $row
+        # add row to plain table
+        $plainTable += $plainRow
+        # pass row to style function
+        $stylishRow = add-style $plainRow 0
+        # add stylish row to stylish table
+        $stylishTable += $stylishRow
     }
+
+    $aggregateRow = add-style (aggregate $plainTable)
+    $stylishTable += $paddingRow
+    $stylishTable += $aggregateRow
+    
+    return $stylishTable
 }
 function legend {echo "legend placeholder"}
 function options {echo "options plaeholder"}
 
+function transform ($row) { # TODO
+    # calculate rates and returns stylized string on condition
+    $rates = calculate-rates $row.amount $row.frequency $row.isVariable #done
+    # calculate time difference and applies style accordingly
+    $timeLeft = calculate-timeLeft $row.nextPayment $row.finalPayment #todo
+    # In JSON, change status to array using codes
+    $status = $null #todo
+    # simply convert deadlines to MMM-d or YYYY-MMM-d
+    $deadlines = $null #todo
+    
+    $plainRow = [PSCustomObject]@{
+        ID = $row.id
+        "Name of Bill" = $row.name
+        Monthly = $rates[0]
+        Biweekly = $rates[1]
+        Daily = $rates[2]
+        "Time Left" = $timeLeft
+        Status = $status
+        Source = $row.source
+        Deadline = $deadlines[0]
+        "Final Deadline" = $deadlines[1]
+    }
+
+    $stylishRow = emphasize $plainRow
+}
+
+function add-style (OptionalParameters) { # TODO
+    
+}
+
 # Returns an array of three amounts: monthly, biweekly, daily
-function calculate-rates ($amount, $frequency) {
-    $n = $frequency.number
+function calculate-rates ($amount, $frequency, $isVariable) {
     $u = $frequency.unit
-    if ($u -eq 'm'){
-        $biweekly = $amount / 2.17 # Average biweekly cycle per month
-        $daily = $amount / [System.DateTime]::DaysInMonth((Get-Date).Year, (Get-Date).Month)
-        return @($amount, $biweekly, $daily)
+    $n = $frequency.number
+    $daysPerYear = 365.25             # 1 y = 365.25   d
+    $fortnightsPerYear = 365.25 / 14  # 1 y =  26.0893 f
+    $fortnightsPerMonth = 2.17        # 1 m =   2.17   f
+    $daysPerMonth = [System.DateTime]::DaysInMonth((Get-Date).Year, (Get-Date).Month)
+    $rates = @()
+    if ($u -eq 'y'){
+        $rates[0] = $amount / ($n * 12)                  # 1 y = 12.0000 months
+        $rates[1] = $amount / ($n * $fortnightsPerYear)  # 1 y = 26.0893 fortnights
+        $rates[2] = $amount / ($n * $daysPerYear)        # 1 y = 365.250 days
+    }
+    elseif ($u -eq 'm'){
+        $monthly  = $amount / $n
+        $biweekly = $amount / ($n * $fortnightsPerMonth)
+        $daily    = $amount / ($n * $daysPerMonth)
+        return @($monthly, $biweekly, $daily)
     }
     elseif ($u -eq 'd'){
-        $monthly  = $amount / $n * 30.436 # average days per month
-        $biweekly = $amount / $n * 14     # 14 days per biweekly cycle
+        $monthly  = $amount / ($n * $daysPerMonth)
+        $biweekly = $amount / ($n * 14)
         $daily    = $amount / $n
         return @($monthly,$biweekly,$daily)
     }
     else {
-        return "Invalid frequency @ process-amount"
+        return "Invalid frequency @ calculate-rates"
     }
+
+    for ($i = 0; $i -lt $rates.Length; $i++) {
+        $rate[$i] = "" + $rate[$i]
+        if ($isVariable){$rate[$i] = (i $rate[$i])}
+    }
+
+
+    return $rates
 }
 
 
