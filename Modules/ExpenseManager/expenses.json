@@ -7,9 +7,9 @@
             "number": 14,
             "unit": "d"
         },
-        "nextPayment": "2023-09-18T00:00:00",
+        "nextPayment": "2023-10-16T00:00:00",
         "finalPayment": "2029-04-09T00:00:00",
-        "status": "auto",
+        "status": ["AUTO"],
         "source": "chequing",
         "isVariable": false,
         "type": "personal"
@@ -24,7 +24,7 @@
         },
         "nextPayment": "2023-09-16T00:00:00",
         "finalPayment": "indefinite",
-        "status": "auto",
+        "status": ["auto"],
         "isVariable": false,
         "source": "chequing",
         "type": "personal"
@@ -54,7 +54,7 @@
         },
         "nextPayment": "2023-09-16T00:00:00",
         "finalPayment": "indefinite",
-        "status": "unpaid",
+        "status": ["NP"],
         "isVariable": false,
         "source": "chequing",
         "type": "personal"
@@ -69,7 +69,7 @@
         },
         "nextPayment": "2023-09-25T00:00:00",
         "finalPayment": "2052-06-25T00:00:00",
-        "status": "unsecured",
+        "status": ["NSEC"],
         "isVariable": false,
         "source": "chequing",
         "type": "personal"
@@ -84,7 +84,7 @@
         },
         "nextPayment": "2023-09-24T00:00:00",
         "finalPayment": "indefinite",
-        "status": "unpaid",
+        "status": ["NP"],
         "isVariable": true,
         "source": "chequing",
         "type": "personal"
@@ -99,7 +99,7 @@
         },
         "nextPayment": "2023-09-27T00:00:00",
         "finalPayment": "indefinite",
-        "status": "unpaid",
+        "status": ["NP"],
         "isVariable": true,
         "source": "chequing",
         "type": "personal"
@@ -114,7 +114,7 @@
         },
         "nextPayment": "2023-09-17T00:00:00",
         "finalPayment": "unknown",
-        "status": "unpaid",
+        "status": ["NP"],
         "isVariable": false,
         "source": "chequing",
         "type": "personal"
@@ -129,7 +129,7 @@
         },
         "nextPayment": "2023-09-14T00:00:00",
         "finalPayment": "indefinite",
-        "status": "auto/uncompensated",
+        "status": ["AUTO","NCOM"],
         "isVariable": true,
         "source": "chequing",
         "type": "household"
@@ -144,7 +144,7 @@
         },
         "nextPayment": "2023-09-28T00:00:00",
         "finalPayment": "indefinite",
-        "status": "unpaid/uncompensated",
+        "status": ["NP","NCOM"],
         "isVariable": true,
         "source": "?",
         "type": "household"
@@ -159,7 +159,7 @@
         },
         "nextPayment": "2023-09-21T00:00:00",
         "finalPayment": "indefinite",
-        "status": "auto/uncompensated",
+        "status": ["AUTO","NCOM"],
         "isVariable": false,
         "source": "chequing",
         "type": "household"

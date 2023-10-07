@@ -45,6 +45,14 @@ function bgg ($string) {return "`e[42m" + $string + "`e[49m"}
 function bgy ($string) {return "`e[48;2;255;255;0m" + $string + "`e[49m"}
 function bgo ($string) {return "`e[101m" + $string + "`e[49m"}
 
+function light-green ($string) {
+    "`e[38;2;144;238;144m" + $string + "`e[49m"
+}
+
+function yellowish-orange ($string) {
+    "`e[38;2;255;173;66m" + $string + "`e[49m"
+}
+
 # TESTING
 Write-Host (b Bold)
 Write-Host (i Italic)
