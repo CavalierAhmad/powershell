@@ -24,7 +24,7 @@
         },
         "nextPayment": "2023-09-16T00:00:00",
         "finalPayment": "indefinite",
-        "status": ["auto"],
+        "status": ["AUTO"],
         "isVariable": false,
         "source": "chequing",
         "type": "personal"

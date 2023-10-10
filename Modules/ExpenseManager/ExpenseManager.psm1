@@ -28,7 +28,7 @@ new-report
 
 function new-report {
     display "expenses"
-    display "raw table"
+    #display "raw table"
     display "legend"
     display "options"
 }
@@ -36,8 +36,7 @@ function new-report {
 # Routing function
 function display ($request) {
     if ($request -eq "expenses"){
-        $viewTable = new-viewTable
-        $viewTable | Format-Table -wrap
+        new-viewTable | Format-Table -wrap
     }    
     if ($request -eq "raw table"){
         Write-Host (u (fgw "`nRAW TABLE"))
@@ -121,17 +120,25 @@ function add-style ($plainRow, $aggregate) { # TODO
             $status = $plainRow.status
 
         # Monthly, Biweekly, Daily: If isVariable is true, rates trio are italics
-            $rates[0] = [math]::Round($rates[0])
-            $rates[1] = [math]::Round($rates[1])
-            $rates[2] = [math]::Round($rates[2])
-            if ($plainRow.isVariable){
-                $rates[0] = "$(i $rates[0])" + "$"
-                $rates[1] = "$(i $rates[1])" + "$"
-                $rates[2] = "$(i $rates[2])" + "$"
-            } else {
-                $rates[0] = "" + $rates[0] + "$"
-                $rates[1] = "" + $rates[1] + "$"
-                $rates[2] = "" + $rates[2] + "$"
+            if (-not ($rates[0] -is [double])){
+                $rates[0] = $rates[0]
+                $rates[1] = $rates[1]
+                $rates[2] = $rates[2]
+            }
+            else {
+                $rates[0] = [math]::Round($rates[0])
+                $rates[1] = [math]::Round($rates[1])
+                $rates[2] = [math]::Round($rates[2])
+                
+                if ($plainRow.isVariable){
+                    $rates[0] = "$(i $rates[0])" + "$"
+                    $rates[1] = "$(i $rates[1])" + "$"
+                    $rates[2] = "$(i $rates[2])" + "$"
+                } else {
+                    $rates[0] = "" + $rates[0] + "$"
+                    $rates[1] = "" + $rates[1] + "$"
+                    $rates[2] = "" + $rates[2] + "$"
+                }
             }
         
         # Time Left: If Time left has certain criteria, give color or display hours instead of day    
