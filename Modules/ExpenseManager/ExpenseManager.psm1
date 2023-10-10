@@ -65,6 +65,7 @@ function new-viewTable { # TODO
         $plainRow = transform $row
         # add row to plain table
         $plainTable += $plainRow
+        $plainTable
         # pass row to style function
         $stylishRow = add-style $plainRow $false
         # add stylish row to stylish table
@@ -152,6 +153,7 @@ function add-style ($plainRow, $aggregate) { # TODO
                     elseif ($timeTilNext[0] -gt 21) {$timeString = (fgg "$($timeTilNext[0])  ")}
                 }
                 "h" {$timeString = "$(f $(bgr $(fgy $timeTilNext[0])))"} # hh:mm h
+                "error" {}
                 Default {return (fgr "error")}
             }
 
