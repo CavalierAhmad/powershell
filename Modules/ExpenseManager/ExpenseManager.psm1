@@ -65,7 +65,6 @@ function new-viewTable { # TODO
         $plainRow = transform $row
         # add row to plain table
         $plainTable += $plainRow
-        $plainTable
         # pass row to style function
         $stylishRow = add-style $plainRow $false
         # add stylish row to stylish table
@@ -76,6 +75,7 @@ function new-viewTable { # TODO
     #todo $aggregateRow = add-style (aggregate $plainTable)
     #todo $stylishTable += $aggregateRow
     
+    $plaintable | format-table
     return $stylishTable
 }
 function legend {echo "legend placeholder"}
@@ -145,7 +145,8 @@ function add-style ($plainRow, $aggregate) { # TODO
         # Time Left: If Time left has certain criteria, give color or display hours instead of day    
             switch ($timeTilNext[1]<#unit#>) {
                 "d" {
-                        if ($timeTilNext[0] -le 2)  {$timeString = (fgr "$($timeTilNext[0])  ")}
+                        if ($timeTilNext[0] -lt -36000) {$timeString = $null}
+                    elseif ($timeTilNext[0] -le 2)  {$timeString = (fgr "$($timeTilNext[0])  ")}
                     elseif ($timeTilNext[0] -le 5)  {$timeString = (fgo "$($timeTilNext[0])  ")}
                     elseif ($timeTilNext[0] -le 8)  {$timeString = (yellowish-orange "$($timeTilNext[0])  ")}
                     elseif ($timeTilNext[0] -le 14) {$timeString = (fgy "$($timeTilNext[0])  ")}
