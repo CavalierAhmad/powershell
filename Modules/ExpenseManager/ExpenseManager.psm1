@@ -6,7 +6,13 @@ which generates a "plain table", and a "stylish table".
 STATUS:
 calculate-rates    TESTED
 calculate-timeLeft TESTED
+transform OK
+add-style TESTED for single
+new-viewTable(): Stylish table only displays X01 and X04, most likely because of unexpected types
+#todo resolve edge cases
 #>
+
+function debug {open .\Modules\ExpenseManager}
 
 <#
 FUNCTION CHART:
@@ -66,9 +72,9 @@ function new-viewTable { # TODO
         $stylishTable += $stylishRow
     }
 
-    $aggregateRow = add-style (aggregate $plainTable)
-    $stylishTable += $paddingRow
-    $stylishTable += $aggregateRow
+    #todo $stylishTable += (add-padding $stylishTable)
+    #todo $aggregateRow = add-style (aggregate $plainTable)
+    #todo $stylishTable += $aggregateRow
     
     return $stylishTable
 }
@@ -101,56 +107,91 @@ function transform ($row) { # TESTED
 The "aggregate" switch controls whether it is dealing with a regular row or an aggregate row
 #>
 function add-style ($plainRow, $aggregate) { # TODO
+
     if ($aggregate){
+
+        # $stylishRow = ...
  
-    } else { # TODO TEST
+    } else {
 
-        $deltaFinal = $plainRow."Time Left".deltaFinal[0] # [number,unit]
-        $deltaNext = $plainRow."Time Left".deltaNext[0]
-        $deltaNextUnit = $plainRow."Time Left".deltaNext[1]
-        $monthly = $biweekly = $daily = $plainRow.Monthly # WRONG
+        # Need to process the following, everything else displayas is
+            $rates = @($plainRow.Monthly,$plainRow.Biweekly,$plainRow.Daily)
+            $timeTilNext = $plainRow.deltaNext
+            $timeTilFinal = $plainRow.deltaFinal
+            $status = $plainRow.status
 
-        # If isVariable, rates trio are italics
-        if ($plainRow.isVariable){
-            $monthly  = "$(i $plainRow.Monthly)"
-            $biweekly = "$(i $plainRow.Biweekly)"
-            $daily    = "$(i $plainRow.Daily)"
-        }
-        # If Time left has certain criteria, give color or display hours instead of day
-            
-        switch ($deltaNextUnit) {
-            "d" {
-                    if ($deltaNext -le 2){$deltaNext = "$(fgr $deltaNext)"}
-                elseif ($deltaNext -le 5) {$deltaNext = "$(fgo $deltaNext)"}
-                elseif ($deltaNext -le 8) {$deltaNext = "$(yellowish-orange $deltaNext)"}
-                elseif ($deltaNext -le 14) {$deltaNext = "$(fgy $deltaNext)"}
-                elseif ($deltaNext -le 21) {$deltaNext = "$(light-green $deltaNext)"}
-                elseif ($deltaNext -gt 21) {$deltaNext = "$(fgg $deltaNext)"}
+        # Monthly, Biweekly, Daily: If isVariable is true, rates trio are italics
+            $rates[0] = [math]::Round($rates[0])
+            $rates[1] = [math]::Round($rates[1])
+            $rates[2] = [math]::Round($rates[2])
+            if ($plainRow.isVariable){
+                $rates[0] = "$(i $rates[0])" + "$"
+                $rates[1] = "$(i $rates[1])" + "$"
+                $rates[2] = "$(i $rates[2])" + "$"
+            } else {
+                $rates[0] = "" + $rates[0] + "$"
+                $rates[1] = "" + $rates[1] + "$"
+                $rates[2] = "" + $rates[2] + "$"
             }
-            "h" {$deltaNext = "" + $deltaNext + "h"}
-            "m" {}
-            Default {return (fgr "error")}
-        }
+        
+        # Time Left: If Time left has certain criteria, give color or display hours instead of day    
+            switch ($timeTilNext[1]<#unit#>) {
+                "d" {
+                        if ($timeTilNext[0] -le 2)  {$timeString = (fgr "$($timeTilNext[0])  ")}
+                    elseif ($timeTilNext[0] -le 5)  {$timeString = (fgo "$($timeTilNext[0])  ")}
+                    elseif ($timeTilNext[0] -le 8)  {$timeString = (yellowish-orange "$($timeTilNext[0])  ")}
+                    elseif ($timeTilNext[0] -le 14) {$timeString = (fgy "$($timeTilNext[0])  ")}
+                    elseif ($timeTilNext[0] -le 21) {$timeString = (light-green "$($timeTilNext[0])  ")}
+                    elseif ($timeTilNext[0] -gt 21) {$timeString = (fgg "$($timeTilNext[0])  ")}
+                }
+                "h" {$timeString = "$(f $(bgr $(fgy $timeTilNext[0])))"} # hh:mm h
+                Default {return (fgr "error")}
+            }
 
-        # If finalPayment is not null, append "/diff" to timeleft
+            # If finalPayment is not null nor a string, append "/diff" to timeleft
 
-        if ($deltaFinal){$deltaNext = "" + $deltaNext + "  /$deltaFinal"}
+            if ($timeTilFinal -and -not ($timeTilFinal -is [string])){
+                $timeString = $timeString + "$(gray "/$($timeTilFinal[0])$($timeTilFinal[1])")"
+            }
 
-        $stylishRow = [PSCustomObject]@{
-            ID = $plainRow.ID
-            "Name of Bill" = $plainRow."Name of Bill"
-            Monthly = $monthly
-            Biweekly = $biweekly
-            Daily = $daily
-            "Time Left" = $deltaNext
-            Status = $plainRow.Status
-            Source = $plainRow.Source
-            Deadline = $plainRow.Deadline.ToString("MMM-d")
-            "Final Deadline" = $plainRow."Final Deadline".ToString("yyyy-MMM-d")
-        }
+        # Status = $plainRow.Status (array)
+            $stylishStatus = @()
+            foreach ($item in $status){
+                switch ($item) {
+                    "NP" {$newitem = (fgr $item)}
+                    "NSEC" {$newitem = (fgr $item)}
+                    "NCOM" {$newitem = (fgr $item)}
+                    "P" {$newitem = (fgg $item)}
+                    "SEC" {$newitem = (fgg $item)}
+                    "COM" {$newitem = (fgg $item)}
+                    Default {$newitem = $item}
+                }
+                $stylishStatus += $newitem
+            }
 
-        return $stylishRow
+        # "Final P." = $plainRow.finalPayment.ToString("yyyy-MMM-d")
+            if ($timeTilFinal -is [string] -or $timeTilFinal -eq $null){
+                $finalP = $timeTilFinal
+            } else {
+                $finalP = $plainRow.finalPayment.ToString("yyyy-MMM-d")
+            }
+        
+        # Build the row to return
+            $stylishRow = [PSCustomObject]@{
+                ID = $plainRow.ID
+                "Name of Bill" = $plainRow.name
+                Monthly = $rates[0]
+                Biweekly = $rates[1]
+                Daily = $rates[2]
+                "Time Left" = (n $timeString)
+                Status = $stylishStatus
+                Source = $plainRow.Source
+                Deadline = $plainRow.nextPayment.ToString("MMM-d")
+                "Final P." = $finalP
+            }
     }
+
+    return $stylishRow
 }
 
 # Returns an array of three amounts: monthly, biweekly, daily
@@ -170,7 +211,7 @@ function calculate-rates ($amount, $frequency) { # partially-tested
         $rates[2] = $amount / ($n * $daysPerYear)        # 1 y = 365.250 days
     }
     elseif ($u -eq 'm'){
-        $rates[0] = $amount / $n
+        $rates[0] = $amount /  $n
         $rates[1] = $amount / ($n * $fortnightsPerMonth)
         $rates[2] = $amount / ($n * $daysPerMonth)
     }
@@ -193,21 +234,33 @@ function calculate-rates ($amount, $frequency) { # partially-tested
 function calculate-timeLeft ($date1, $date2) {
     if (-not $date1){return (fgr "error")}
 
+    # Process next payment date
     try {
-        $diff = ($date1 - (get-date)).days
-        $unit = 'd'
+        # Assume difference in days non-zero
+        $diff = ($date1 - (get-date))
+        if ($diff.days -ne 0)
+             {$nextDiff = @($diff.days,'d')}
+        else {$nextDiff = @($diff.totalHours,'h')}
+    }
+    catch {$nextDiff = @(-99999,(fgr "error"))}
 
-        if ($diff -eq 0){$diff = ($date1 - (get-date)).hours ; $unit = 'h'}
-        # if ($diff -eq 0){$diff = ($date1 - (get-date).minutes)}
-
-        $diff2 = ($date2 - (get-date)).days
-        
-        return @{
-            deltaNext = @($diff,$unit)
-            deltaFinal = @($diff2,"d")
+    # Process last payment date
+    # date2 can be a date OR a string
+    try {
+        if ($date2 -is [string] -or $date2 -eq $null){
+            if ($date2 -eq "indefinite"){$lastDiff = $null}
+            else {$lastDiff = $date2} # Keep string as is
+        } else {
+            $diff = ($date2 - (get-date))
+                if ($diff.days -gt 548){$lastDiff = @([math]::Round($diff.days/365,1),'y')}    # Over 1.5 years
+            elseif ($diff.days -gt 182){$lastDiff = @([math]::Round($diff.days/30.437,1),'m')} # Over 6 months
+            else                       {$lastDiff = @($diff.days,'d')}
         }
     }
-    catch {
-        return (fgr "error")
+    catch {$lastDiff = @(-99999,(fgr "error"))}
+        
+    return @{
+        deltaNext = $nextDiff  <#An array of value and unit#>
+        deltaFinal = $lastDiff <#Either an array or string#>
     }
 }
