@@ -75,7 +75,7 @@ function new-viewTable { # TODO
     #todo $aggregateRow = add-style (aggregate $plainTable)
     #todo $stylishTable += $aggregateRow
     
-    $plaintable | format-table
+    #$plaintable | format-table
     return $stylishTable
 }
 function legend {echo "legend placeholder"}

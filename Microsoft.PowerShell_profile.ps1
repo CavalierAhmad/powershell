@@ -4,11 +4,6 @@
 cd "$profile\.."
 $origin = $PWD.Path
 
-# Create log file
-$logFile = ".\tmp\script.log"
-"START _profile.ps1" > $logFile
-function log ($log) {$log >> $logFile}
-
 # Modules
 Import-Module .\Modules\AssignmentManager\AssignmentManager.psm1 -verbose # TO DO           last
 Import-Module .\Modules\ChoreManager\ChoreManager.psm1           -verbose # TO DO           low

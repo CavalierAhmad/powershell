@@ -7,7 +7,7 @@
             "number": 14,
             "unit": "d"
         },
-        "nextPayment": "2023-10-16T00:00:00",
+        "nextPayment": "2023-12-16T00:00:00",
         "finalPayment": "2029-04-09T00:00:00",
         "status": ["AUTO"],
         "source": "chequing",
@@ -22,7 +22,7 @@
             "number": 1,
             "unit": "m"
         },
-        "nextPayment": "2023-09-16T00:00:00",
+        "nextPayment": "2023-12-16T00:00:00",
         "finalPayment": "indefinite",
         "status": ["AUTO"],
         "isVariable": false,
@@ -52,7 +52,7 @@
             "number": 1,
             "unit": "m"
         },
-        "nextPayment": "2023-09-16T00:00:00",
+        "nextPayment": "2023-12-16T00:00:00",
         "finalPayment": "indefinite",
         "status": ["NP"],
         "isVariable": false,
@@ -67,7 +67,7 @@
             "number": 1,
             "unit": "m"
         },
-        "nextPayment": "2023-10-25T00:00:00",
+        "nextPayment": "2023-12-25T00:00:00",
         "finalPayment": "2052-06-25T00:00:00",
         "status": ["NSEC"],
         "isVariable": false,
@@ -82,7 +82,7 @@
             "number": 1,
             "unit": "m"
         },
-        "nextPayment": "2023-11-28T00:00:00",
+        "nextPayment": "2023-12-28T00:00:00",
         "finalPayment": "indefinite",
         "status": ["NP"],
         "isVariable": true,
@@ -97,7 +97,7 @@
             "number": 1,
             "unit": "m"
         },
-        "nextPayment": "2023-09-27T00:00:00",
+        "nextPayment": "2023-12-27T00:00:00",
         "finalPayment": "indefinite",
         "status": ["NP"],
         "isVariable": true,
@@ -112,42 +112,12 @@
             "number": 1,
             "unit": "m"
         },
-        "nextPayment": "2023-09-17T00:00:00",
+        "nextPayment": "2023-12-17T00:00:00",
         "finalPayment": "unknown",
         "status": ["NP"],
         "isVariable": false,
         "source": "chequing",
         "type": "personal"
-    },
-    {
-        "id": "X-08",
-        "name": "Gazifere",
-        "amount": 38.98,
-        "frequency": {
-            "number": 27,
-            "unit": "d"
-        },
-        "nextPayment": "2023-09-14T00:00:00",
-        "finalPayment": "indefinite",
-        "status": ["AUTO","NCOM"],
-        "isVariable": true,
-        "source": "chequing",
-        "type": "household"
-    },
-    {
-        "id": "X-09",
-        "name": "Hydro-Quebec",
-        "amount": 46.40,
-        "frequency": {
-            "number": 60,
-            "unit": "d"
-        },
-        "nextPayment": "2023-09-28T00:00:00",
-        "finalPayment": "indefinite",
-        "status": ["NP","NCOM"],
-        "isVariable": true,
-        "source": "?",
-        "type": "household"
     },
     {
         "id": "X-10",
@@ -157,7 +127,7 @@
             "number": 1,
             "unit": "m"
         },
-        "nextPayment": "2023-09-21T00:00:00",
+        "nextPayment": "2023-12-21T00:00:00",
         "finalPayment": "indefinite",
         "status": ["AUTO","NCOM"],
         "isVariable": false,
@@ -207,21 +177,6 @@
         "status": null,
         "source": "credit",
         "isVariable": false,
-        "type": "personal"
-    },
-    {
-        "id": "X-14",
-        "name": "Gifts",
-        "amount": null,
-        "frequency": {
-            "number": 1,
-            "unit": "m"
-        },
-        "nextPayment": "0001-01-01T00:00:00",
-        "finalPayment": "indefinite",
-        "status": null,
-        "source": null,
-        "isVariable": null,
         "type": "personal"
     },
     {

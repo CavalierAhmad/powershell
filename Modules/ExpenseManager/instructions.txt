@@ -9,15 +9,10 @@ X-03 Mortgage       450.00 @{number=1; unit=m}  25-Sep-23 12:00:00 AM 25-Jun-52 
 X-04 DJ Credit Card 378.00 @{number=1; unit=m}  24-Sep-23 12:00:00 AM indefinite            unpaid                    chequing       True personal
 X-05 TD Credit Card 194.00 @{number=1; unit=m}  27-Sep-23 12:00:00 AM indefinite            unpaid                    chequing       True personal
 X-06 Fairstone Loan 210.00 @{number=1; unit=m}  17-Sep-23 12:00:00 AM unknown               unpaid                    chequing      False personal
-X-07 Gazifere        38.98 @{number=27; unit=d} 14-Sep-23 12:00:00 AM indefinite            auto/uncompensated        chequing       True household
-X-08 Hydro-Quebec    46.40 @{number=60; unit=d} 28-Sep-23 12:00:00 AM indefinite            unpaid/uncompensated      ?              True household
 X-09 Wifi            14.37 @{number=1; unit=m}  21-Sep-23 12:00:00 AM indefinite            auto/uncompensated        chequing      False household
 X-10 Youtube Music       6 @{number=1; unit=m}  21-Sep-23 12:00:00 AM indefinite            nextPayment is incorrect. credit        False personal
 X-11 Haircut            25 @{number=3; unit=m}  01-Jan-24 12:00:00 AM indefinite                                      chequing      False personal
-X-12 Red Cross          25 @{number=1; unit=m}  05-Nov-23 12:00:00 AM arbitrary                                       credit        False personal
-X-13 Supplies              @{number=1; unit=m}  01-Jan-01 12:00:00 AM indefinite                                                          personal
 X-14 Amazon Prime          @{number=1; unit=y}  01-Jan-01 12:00:00 AM indefinite                                      credit        False personal
-X-15 Gifts                 @{number=1; unit=m}  01-Jan-01 12:00:00 AM indefinite                                                          personal
 
 THIS TABLE IS NOT APPROPRIATE FOR VIEWING, SO FORMATTING WILL BE NEEDED.
 

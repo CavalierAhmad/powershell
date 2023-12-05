@@ -1,9 +1,0 @@
-START _profile.ps1
-Imported modules
-Loaded config
-Imported .\Scripts
-Set UI
-PROFILE -> welcome.ps1
-slowbanner
-datetime
-welcome.ps1 -> PROFILE
