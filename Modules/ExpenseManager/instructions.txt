@@ -1,0 +1,80 @@
+HERE IS THE TABLE AS REPRESENTED IN JSON, LET IT BE CALLED "rawTable"
+
+id   name           amount frequency            nextPayment           finalPayment          status                    source   isVariable type
+--   ----           ------ ---------            -----------           ------------          ------                    ------   ---------- ----
+X-00 Car Payment    199.22 @{number=14; unit=d} 18-Sep-23 12:00:00 AM 09-Apr-29 12:00:00 AM auto                      chequing      False personal
+X-01 Car Insurance  125.81 @{number=1; unit=m}  16-Sep-23 12:00:00 AM indefinite            auto                      chequing      False personal
+X-02 Phone Data      63.24 @{number=1; unit=m}  16-Sep-23 12:00:00 AM indefinite            unpaid                    chequing      False personal
+X-03 Mortgage       450.00 @{number=1; unit=m}  25-Sep-23 12:00:00 AM 25-Jun-52 12:00:00 AM unsecured                 chequing      False personal
+X-04 DJ Credit Card 378.00 @{number=1; unit=m}  24-Sep-23 12:00:00 AM indefinite            unpaid                    chequing       True personal
+X-05 TD Credit Card 194.00 @{number=1; unit=m}  27-Sep-23 12:00:00 AM indefinite            unpaid                    chequing       True personal
+X-06 Fairstone Loan 210.00 @{number=1; unit=m}  17-Sep-23 12:00:00 AM unknown               unpaid                    chequing      False personal
+X-09 Wifi            14.37 @{number=1; unit=m}  21-Sep-23 12:00:00 AM indefinite            auto/uncompensated        chequing      False household
+X-10 Youtube Music       6 @{number=1; unit=m}  21-Sep-23 12:00:00 AM indefinite            nextPayment is incorrect. credit        False personal
+X-11 Haircut            25 @{number=3; unit=m}  01-Jan-24 12:00:00 AM indefinite                                      chequing      False personal
+X-14 Amazon Prime          @{number=1; unit=y}  01-Jan-01 12:00:00 AM indefinite                                      credit        False personal
+
+THIS TABLE IS NOT APPROPRIATE FOR VIEWING, SO FORMATTING WILL BE NEEDED.
+
+BUT FIRST, IT NEEDS TO BE PROCESSED (ADDING AND REMOVAL OF COLUMNS, APPLICATION OF LOGIC)
+
+UPON IMPORTING, STORE THE RAW TABLE IN THE MAIN SCOPE (DOMAIN) FOR UPDATING, TO DO LATER
+
+FOR NOW, FOCUS IS TO REFINE THE RAW TABLE TO MAKE IT PRESENTABLE AND EFFICIENT AT CONVEYING INFORMATION,
+
+HERE IS THE END GOAL, IT WILL BE CALLED "viewTable":
+
+ID  Name of Bill Monthly Biweekly Daily Time Left                 Status Deadline Source
+--  ------------ ------- -------- ----- ---------                 ------ -------- ------
+X00 Car Payment  999$    99$      9$    COLOR GRADIENT 99[/TOTAL] auto   MMM d    cheque or credit
+
+There will also be a legend:
+
+italics means inaccurate amount, needs update
+
+And an option line:
+
+[Highlighted] `mod` for updating value ...
+
+
+TODO 1: Process table
+
+ID = rawTable.id
+args: id
+
+Name of Bill = rawTable.name
+args: name
+
+Monthly = (stylish string) <- rates[0] <- (amount, frequency)
+Biweekly = (stylish string) <- rates[1] <- (amount, frequency)
+Daily = (stylish string) <- rates[2] <- (amount, frequency)
+args: amount, frequency, isVariable
+
+Time Left = diff = (nextPayment - now)[.days | .hours | .minutes]
+	Then pass diff = [time,unit] to styling function emphasize (diff
+	If bill has final date:
+		finalDiff = (finalPayment - now).days
+	Then append to diff: /finalDiff
+args: nextPayment finalPayment
+
+Status = {AUTO,UNPPAID,PAID,UNSECURED,secured}
+	This one needs a legend AUTO, XP, P, XSEC, SEC, 
+	Add color then send to table
+args: status
+
+Source = rawTable.source
+
+Deadline = raw date string -> date object -> toString MMM-d
+arg: nextpayment
+
+Final Deadline = raw date string -> date object -> toString MMM-d
+arg: finalPayment
+
+-----
+
+After first processing is done, on to second processing: aggreagtion
+
+add empty apdding row then add sums and averages based on few criteria:
+	do not mix cheque and credit types together
+
+

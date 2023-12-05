@@ -1,40 +1,46 @@
 ### PowerShell Profile Script
 
 # Set the working directory
-Set-Location "$profile\.."
+cd "$profile\.."
+$origin = $PWD.Path
 
-echo "Loading variables..."       ; . ".\ressources\variables"
-echo "Loading aliases..."         ; . ".\ressources\aliases"
-echo "Loading functions..."       ; . ".\ressources\functions"
-echo "Loading banner..."          ; . ".\ressources\banner"
-echo "Importing task modules..."  ; . ".\TaskModule"
-# echo " Creating array # size = 35^2
-# echo " Loading tasks into array
-# echo " Loading tasklist header
+# Modules
+Import-Module .\Modules\AssignmentManager\AssignmentManager.psm1 -verbose # TO DO           last
+Import-Module .\Modules\ChoreManager\ChoreManager.psm1           -verbose # TO DO           low
+Import-Module .\Modules\CredentialManager\CredentialManager.psm1 -verbose # TODO           high
+Import-Module .\Modules\Cryptography\Cryptography.psm1           -verbose # Adequate
+Import-Module .\Modules\EventManager\EventManager.psm1           -verbose # TODO           high
+Import-Module .\Modules\ExpenseManager\ExpenseManager.psm1       -verbose # TODO PRIORITY
+Import-Module .\Modules\FleetDatabase\FleetDatabase.psm1                  # Adequate: report hyundai
+Import-Module .\Modules\HomeData\HomeData.psm1                            # Empty
+Import-Module .\Modules\IncomeManager\IncomeManager.psm1         -verbose # Empty?
+Import-Module .\Modules\InputControl\InputControl.psm1           -verbose #
+Import-Module .\Modules\JsonAdapter\JsonAdapter.psm1             -verbose #
+Import-Module .\Modules\StorageManager\StorageManager.psm1                #
+Import-Module .\Modules\StyleModule\StyleModule.psm1             -verbose # Functional; to use style: "no style $(f "with style")"
+Import-Module .\Modules\TaskManager\TaskManager.psm1             -verbose # TO DO           med
+Import-Module .\Modules\UserInputProcessor\UserInputProcessor.psm1 -verbose
+log 'Imported modules'
 
-# Set console title
-$Host.UI.RawUI.WindowTitle = "MyTerminal"
+# Load DOMAIN, which represents the environment data of this powershell session
+$DOMAIN = fromjson .\config.json ; log 'Loaded config'
 
-# Set console color
-$Host.UI.RawUI.BackgroundColor = "Black"
-$Host.UI.RawUI.ForegroundColor = "DarkYellow"
+#todo MOVE THESE INTO MODULES
+. .\Scripts\import-variables   # DOMAIN variables
+. .\Scripts\import-aliases
+. .\Scripts\import-functions
+. .\Scripts\import-assignments # academic and udemy
+. .\Scripts\import-expenses    # expenses
+. .\Scripts\import-chores      # house
+. .\Scripts\import-events      # work schedule, regular transits, birthdays, document expiration
+# . .\Scripts\import-tasks     # one-time tasks and errands
+log 'Imported .\Scripts'
 
-## BEGIN DISPLAY (control speed with boolean)
+# Set UI settings
+$Host.UI.RawUI.WindowTitle = $DOMAIN.consoleSettings.windowTitle # "MyTerminal" from json
+$Host.UI.RawUI.BackgroundColor = $DOMAIN.consoleSettings.backgroundColor
+$Host.UI.RawUI.ForegroundColor = $DOMAIN.consoleSettings.foregroundColor
+log 'Set UI'
 
-cls
-
-# Display banner
-slowbanner # Display banner
-
-# Display datetime
-echo "`nTODAY IS: $date $time";wait
-
-# Display tasklist header
-echo "`nPENDING TASKS (make pretty table):";wait
-echo "          Task     |   Time Left    ";wait
-echo "    --------------------------------`n";wait
-
-# Display tasks
-. ".\ressources\tasklist"  # change to ./printtasks using iteration
-
-echo "`nType 'cmds' to view common commands, 'newv' to add variable:`n"
+# Welcome user
+. .\Scripts\welcome.ps1

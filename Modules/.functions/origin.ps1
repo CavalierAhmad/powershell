@@ -1,0 +1,1 @@
+function origin {cd $origin}

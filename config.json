@@ -1,0 +1,38 @@
+{
+	"consoleSettings":{
+		"windowTitle": "MyTerminal",
+		"backgroundColor": "Black",
+		"foregroundColor": "DarkYellow",
+		"foregroundANSI": "`e[33m"
+	},
+	"paths": {
+		"nexus": "C:\\Users\\Ahmad\\ONEDRI~1\\NEXUS",
+		"modules": ".\\Modules",
+		"ressources": ".\\Ressources",
+		"scripts": ".\\Scripts"
+    },
+	"json": {
+		"assignments": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\AssignmentManager\\assignments.json",
+		"chores": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\ChoreManager\\chores.json",
+		"credentials": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\CredentialManager\\credentials.json",
+		"events": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\EventManager\\events.json",
+		"expenses": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\ExpenseManager\\expenses.json",
+		"tasks": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\TaskManager\tasks.json",
+		"variables": "C:\\Users\\Ahmad\\Documents\\PowerShell\\Modules\\VariablesManager\\variables.json"
+	},
+    "database": {
+      "connectionString": "Server=myServer;Database=myDatabase;User=myUser;Password=myPassword;"
+    },
+    "logging": {
+      "logLevel": "INFO",
+      "logFilePath": "C:\\Logs\\myScript.log"
+    },
+    "apiKeys": {
+      "weatherApiKey": "YOUR_API_KEY_HERE",
+      "paymentGatewayApiKey": "ANOTHER_API_KEY"
+    },
+    "features": {
+      "featureAEnabled": true,
+      "featureBEnabled": false
+    }
+}

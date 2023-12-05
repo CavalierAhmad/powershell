@@ -1,0 +1,212 @@
+[
+    {
+        "id": "X-00",
+        "name": "Car Payment",
+        "amount": 199.22,
+        "frequency": {
+            "number": 14,
+            "unit": "d"
+        },
+        "nextPayment": "2023-12-16T00:00:00",
+        "finalPayment": "2029-04-09T00:00:00",
+        "status": ["AUTO"],
+        "source": "chequing",
+        "isVariable": false,
+        "type": "personal"
+    },
+    {
+        "id": "X-01",
+        "name": "Car Insurance",
+        "amount": 125.81,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "2023-12-16T00:00:00",
+        "finalPayment": "indefinite",
+        "status": ["AUTO"],
+        "isVariable": false,
+        "source": "chequing",
+        "type": "personal"
+    },
+    {
+        "id": "X-02",
+        "name": "Car Maintenance",
+        "amount": null,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "0001-01-01T00:00:00",
+        "finalPayment": "indefinite",
+        "status": null,
+        "source": null,
+        "isVariable": null,
+        "type": "personal"
+    },
+    {
+        "id": "X-03",
+        "name": "Phone Data",
+        "amount": 63.24,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "2023-12-16T00:00:00",
+        "finalPayment": "indefinite",
+        "status": ["NP"],
+        "isVariable": false,
+        "source": "chequing",
+        "type": "personal"
+    },
+    {
+        "id": "X-04",
+        "name": "Mortgage",
+        "amount": 450.00,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "2023-12-25T00:00:00",
+        "finalPayment": "2052-06-25T00:00:00",
+        "status": ["NSEC"],
+        "isVariable": false,
+        "source": "chequing",
+        "type": "personal"
+    },
+    {
+        "id": "X-05",
+        "name": "DJ Credit Card",
+        "amount": 378.00,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "2023-12-28T00:00:00",
+        "finalPayment": "indefinite",
+        "status": ["NP"],
+        "isVariable": true,
+        "source": "chequing",
+        "type": "personal"
+    },
+    {
+        "id": "X-06",
+        "name": "TD Credit Card",
+        "amount": 194.00,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "2023-12-27T00:00:00",
+        "finalPayment": "indefinite",
+        "status": ["NP"],
+        "isVariable": true,
+        "source": "chequing",
+        "type": "personal"
+    },
+    {
+        "id": "X-07",
+        "name": "Fairstone Loan",
+        "amount": 210.00,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "2023-12-17T00:00:00",
+        "finalPayment": "unknown",
+        "status": ["NP"],
+        "isVariable": false,
+        "source": "chequing",
+        "type": "personal"
+    },
+    {
+        "id": "X-10",
+        "name": "Wifi",
+        "amount": 14.37,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "2023-12-21T00:00:00",
+        "finalPayment": "indefinite",
+        "status": ["AUTO","NCOM"],
+        "isVariable": false,
+        "source": "chequing",
+        "type": "household"
+    },
+    {
+        "id": "X-11",
+        "name": "Haircut",
+        "amount": 25,
+        "frequency": {
+            "number": 3,
+            "unit": "m"
+        },
+        "nextPayment": "2024-01-01T00:00:00",
+        "finalPayment": "indefinite",
+        "status": null,
+        "source": "chequing",
+        "isVariable": false,
+        "type": "personal"
+    },
+    {
+        "id": "X-12",
+        "name": "Supplies",
+        "amount": null,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "0001-01-01T00:00:00",
+        "finalPayment": "indefinite",
+        "status": null,
+        "source": null,
+        "isVariable": null,
+        "type": "personal"
+    },
+    {
+        "id": "X-13",
+        "name": "Amazon Prime",
+        "amount": null,
+        "frequency": {
+            "number": 1,
+            "unit": "y"
+        },
+        "nextPayment": "0001-01-01T00:00:00",
+        "finalPayment": "indefinite",
+        "status": null,
+        "source": "credit",
+        "isVariable": false,
+        "type": "personal"
+    },
+    {
+        "id": "X-15",
+        "name": "Youtube Music",
+        "amount": 6,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "2023-09-21T00:00:00",
+        "finalPayment": "indefinite",
+        "status": "nextPayment is incorrect.",
+        "isVariable": false,
+        "source": "credit",
+        "type": "personal"
+    },
+    {
+        "id": "X-16",
+        "name": "Red Cross",
+        "amount": 25,
+        "frequency": {
+            "number": 1,
+            "unit": "m"
+        },
+        "nextPayment": "2023-11-05T00:00:00",
+        "finalPayment": "arbitrary",
+        "status": null,
+        "source": "credit",
+        "isVariable": false,
+        "type": "personal"
+    }
+]
